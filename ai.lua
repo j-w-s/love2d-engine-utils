@@ -54,7 +54,7 @@ function heap:push(item)
     local items = self.items
     insert(items, item)
     local i = #items
-    local parent = floor(i * 0x1p-1) -- i / 2 in hex
+    local parent = floor(i * 0x1p-1) -- i / 2
 
     while i > 1 and self.compare(items[i], items[parent]) do
         items[i], items[parent] = items[parent], items[i]
@@ -110,7 +110,7 @@ end
 local asp = {}
 
 -- grid navigation (8-directional)
-local SQRT2 = 0x1.6a09e667f3bcdp0 -- sqrt(2) exact binary
+local SQRT2 = 0x1.6a09e667f3bcdp0 -- sqrt(2)
 local neighbors_8 = {
     { -1, -1, SQRT2 }, { 0, -1, 0x1p0 }, { 1, -1, SQRT2 },
     { -1, 0,  0x1p0 }, { 1, 0, 0x1p0 },
@@ -186,7 +186,7 @@ function asp.grid(grid, sx, sy, gx, gy, heuristic)
         end
     end
 
-    return nil -- no path
+    return nil 
 end
 
 -- ============================================================================
