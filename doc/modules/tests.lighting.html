@@ -1,0 +1,1118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/demos.planet.main.html">demos.planet.main</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.ai-tests.html">tests.ai-tests</a></li>
+  <li><strong>tests.lighting</strong></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>tests.lighting</code></h1>
+<p>fast integer division by power of 2</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#init">init (dependencies, configuration)</a></td>
+	<td class="summary">initialize lighting system</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_ambient">set_ambient (r, g, b)</a></td>
+	<td class="summary">set ambient light color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_ambient">get_ambient ()</a></td>
+	<td class="summary">get ambient light color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_world_bounds">set_world_bounds (min_x, min_y, max_x, max_y)</a></td>
+	<td class="summary">set world bounds</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_spatial_hashing">set_spatial_hashing (enabled)</a></td>
+	<td class="summary">enable/disable spatial hashing</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_default_attenuation">set_default_attenuation (preset)</a></td>
+	<td class="summary">set default attenuation preset</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_light">add_light (x, y, r, g, b, intensity, range)</a></td>
+	<td class="summary">create a new point light</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_spotlight">add_spotlight (x, y, direction, cone_angle, cone_falloff, r, g, b, intensity, range)</a></td>
+	<td class="summary">create a new spotlight</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#remove_light">remove_light (id)</a></td>
+	<td class="summary">remove a light</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_position">set_light_position (id, x, y, z)</a></td>
+	<td class="summary">set light position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_color">set_light_color (id, r, g, b)</a></td>
+	<td class="summary">set light color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_intensity">set_light_intensity (id, intensity)</a></td>
+	<td class="summary">set light intensity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_range">set_light_range (id, range)</a></td>
+	<td class="summary">set light range</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_attenuation">set_light_attenuation (id, constant, linear, quadratic)</a></td>
+	<td class="summary">set light attenuation coefficients</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_spotlight_direction">set_spotlight_direction (id, direction, cone_angle, cone_falloff)</a></td>
+	<td class="summary">set spotlight direction and cone</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_enabled">set_light_enabled (id, enabled)</a></td>
+	<td class="summary">enable/disable light</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_shadows">set_light_shadows (id, cast_shadows)</a></td>
+	<td class="summary">enable/disable shadow casting</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_light_layer">set_light_layer (id, layer)</a></td>
+	<td class="summary">set light layer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_light">get_light (id)</a></td>
+	<td class="summary">get light data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_all_lights">get_all_lights (layer)</a></td>
+	<td class="summary">get all lights</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_lights">clear_lights ()</a></td>
+	<td class="summary">clear all lights</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_occluder">add_occluder (x1, y1, x2, y2, two_sided)</a></td>
+	<td class="summary">add a line segment occluder</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_rect_occluder">add_rect_occluder (x, y, w, h)</a></td>
+	<td class="summary">add a rectangle occluder</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_circle_occluder">add_circle_occluder (cx, cy, radius, segments)</a></td>
+	<td class="summary">add a circle occluder</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_polygon_occluder">add_polygon_occluder (vertices)</a></td>
+	<td class="summary">add a polygon occluder</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#remove_occluder">remove_occluder (id)</a></td>
+	<td class="summary">remove an occluder</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#remove_occluders">remove_occluders (ids)</a></td>
+	<td class="summary">remove multiple occluders</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_occluder_position">set_occluder_position (id, x1, y1, x2, y2)</a></td>
+	<td class="summary">set occluder endpoints</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_occluder_enabled">set_occluder_enabled (id, enabled)</a></td>
+	<td class="summary">enable/disable occluder</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_occluder_layer">set_occluder_layer (id, layer)</a></td>
+	<td class="summary">set occluder layer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_occluders">clear_occluders ()</a></td>
+	<td class="summary">clear all occluders</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update ()</a></td>
+	<td class="summary">update lighting system (no-op for now, but kept for api compatibility)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_light_at_point">get_light_at_point (x, y, layer)</a></td>
+	<td class="summary">get light contribution at a point (cpu query)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_point_in_shadow">is_point_in_shadow (x, y, light_id)</a></td>
+	<td class="summary">check if point is in shadow (cpu query)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_gpu_data">get_gpu_data ()</a></td>
+	<td class="summary">get raw gpu data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_stats">get_stats ()</a></td>
+	<td class="summary">get statistics</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear">clear ()</a></td>
+	<td class="summary">clear all data</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "init"></a>
+    <strong>init (dependencies, configuration)</strong>
+    </dt>
+    <dd>
+    initialize lighting system
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dependencies</span>
+         table optional dependencies {math=..., table=...}
+        </li>
+        <li><span class="parameter">configuration</span>
+         table optional config {max_lights=..., max_occluders=...}
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_ambient"></a>
+    <strong>set_ambient (r, g, b)</strong>
+    </dt>
+    <dd>
+    set ambient light color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+
+        </li>
+        <li><span class="parameter">g</span>
+
+        </li>
+        <li><span class="parameter">b</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_ambient"></a>
+    <strong>get_ambient ()</strong>
+    </dt>
+    <dd>
+    get ambient light color
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_world_bounds"></a>
+    <strong>set_world_bounds (min_x, min_y, max_x, max_y)</strong>
+    </dt>
+    <dd>
+    set world bounds
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">min_x</span>
+
+        </li>
+        <li><span class="parameter">min_y</span>
+
+        </li>
+        <li><span class="parameter">max_x</span>
+
+        </li>
+        <li><span class="parameter">max_y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_spatial_hashing"></a>
+    <strong>set_spatial_hashing (enabled)</strong>
+    </dt>
+    <dd>
+    enable/disable spatial hashing
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">enabled</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_default_attenuation"></a>
+    <strong>set_default_attenuation (preset)</strong>
+    </dt>
+    <dd>
+    set default attenuation preset
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">preset</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_light"></a>
+    <strong>add_light (x, y, r, g, b, intensity, range)</strong>
+    </dt>
+    <dd>
+    create a new point light
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">r</span>
+
+        </li>
+        <li><span class="parameter">g</span>
+
+        </li>
+        <li><span class="parameter">b</span>
+
+        </li>
+        <li><span class="parameter">intensity</span>
+
+        </li>
+        <li><span class="parameter">range</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_spotlight"></a>
+    <strong>add_spotlight (x, y, direction, cone_angle, cone_falloff, r, g, b, intensity, range)</strong>
+    </dt>
+    <dd>
+    create a new spotlight
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">direction</span>
+
+        </li>
+        <li><span class="parameter">cone_angle</span>
+
+        </li>
+        <li><span class="parameter">cone_falloff</span>
+
+        </li>
+        <li><span class="parameter">r</span>
+
+        </li>
+        <li><span class="parameter">g</span>
+
+        </li>
+        <li><span class="parameter">b</span>
+
+        </li>
+        <li><span class="parameter">intensity</span>
+
+        </li>
+        <li><span class="parameter">range</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "remove_light"></a>
+    <strong>remove_light (id)</strong>
+    </dt>
+    <dd>
+    remove a light
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_position"></a>
+    <strong>set_light_position (id, x, y, z)</strong>
+    </dt>
+    <dd>
+    set light position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">z</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_color"></a>
+    <strong>set_light_color (id, r, g, b)</strong>
+    </dt>
+    <dd>
+    set light color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">r</span>
+
+        </li>
+        <li><span class="parameter">g</span>
+
+        </li>
+        <li><span class="parameter">b</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_intensity"></a>
+    <strong>set_light_intensity (id, intensity)</strong>
+    </dt>
+    <dd>
+    set light intensity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">intensity</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_range"></a>
+    <strong>set_light_range (id, range)</strong>
+    </dt>
+    <dd>
+    set light range
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">range</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_attenuation"></a>
+    <strong>set_light_attenuation (id, constant, linear, quadratic)</strong>
+    </dt>
+    <dd>
+    set light attenuation coefficients
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">constant</span>
+
+        </li>
+        <li><span class="parameter">linear</span>
+
+        </li>
+        <li><span class="parameter">quadratic</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_spotlight_direction"></a>
+    <strong>set_spotlight_direction (id, direction, cone_angle, cone_falloff)</strong>
+    </dt>
+    <dd>
+    set spotlight direction and cone
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">direction</span>
+
+        </li>
+        <li><span class="parameter">cone_angle</span>
+
+        </li>
+        <li><span class="parameter">cone_falloff</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_enabled"></a>
+    <strong>set_light_enabled (id, enabled)</strong>
+    </dt>
+    <dd>
+    enable/disable light
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">enabled</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_shadows"></a>
+    <strong>set_light_shadows (id, cast_shadows)</strong>
+    </dt>
+    <dd>
+    enable/disable shadow casting
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">cast_shadows</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_light_layer"></a>
+    <strong>set_light_layer (id, layer)</strong>
+    </dt>
+    <dd>
+    set light layer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_light"></a>
+    <strong>get_light (id)</strong>
+    </dt>
+    <dd>
+    get light data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_all_lights"></a>
+    <strong>get_all_lights (layer)</strong>
+    </dt>
+    <dd>
+    get all lights
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_lights"></a>
+    <strong>clear_lights ()</strong>
+    </dt>
+    <dd>
+    clear all lights
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_occluder"></a>
+    <strong>add_occluder (x1, y1, x2, y2, two_sided)</strong>
+    </dt>
+    <dd>
+    add a line segment occluder
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x1</span>
+
+        </li>
+        <li><span class="parameter">y1</span>
+
+        </li>
+        <li><span class="parameter">x2</span>
+
+        </li>
+        <li><span class="parameter">y2</span>
+
+        </li>
+        <li><span class="parameter">two_sided</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_rect_occluder"></a>
+    <strong>add_rect_occluder (x, y, w, h)</strong>
+    </dt>
+    <dd>
+    add a rectangle occluder
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">w</span>
+
+        </li>
+        <li><span class="parameter">h</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_circle_occluder"></a>
+    <strong>add_circle_occluder (cx, cy, radius, segments)</strong>
+    </dt>
+    <dd>
+    add a circle occluder
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cx</span>
+
+        </li>
+        <li><span class="parameter">cy</span>
+
+        </li>
+        <li><span class="parameter">radius</span>
+
+        </li>
+        <li><span class="parameter">segments</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_polygon_occluder"></a>
+    <strong>add_polygon_occluder (vertices)</strong>
+    </dt>
+    <dd>
+    add a polygon occluder
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vertices</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "remove_occluder"></a>
+    <strong>remove_occluder (id)</strong>
+    </dt>
+    <dd>
+    remove an occluder
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "remove_occluders"></a>
+    <strong>remove_occluders (ids)</strong>
+    </dt>
+    <dd>
+    remove multiple occluders
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ids</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_occluder_position"></a>
+    <strong>set_occluder_position (id, x1, y1, x2, y2)</strong>
+    </dt>
+    <dd>
+    set occluder endpoints
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">x1</span>
+
+        </li>
+        <li><span class="parameter">y1</span>
+
+        </li>
+        <li><span class="parameter">x2</span>
+
+        </li>
+        <li><span class="parameter">y2</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_occluder_enabled"></a>
+    <strong>set_occluder_enabled (id, enabled)</strong>
+    </dt>
+    <dd>
+    enable/disable occluder
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">enabled</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_occluder_layer"></a>
+    <strong>set_occluder_layer (id, layer)</strong>
+    </dt>
+    <dd>
+    set occluder layer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_occluders"></a>
+    <strong>clear_occluders ()</strong>
+    </dt>
+    <dd>
+    clear all occluders
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update ()</strong>
+    </dt>
+    <dd>
+    update lighting system (no-op for now, but kept for api compatibility)
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_light_at_point"></a>
+    <strong>get_light_at_point (x, y, layer)</strong>
+    </dt>
+    <dd>
+    get light contribution at a point (cpu query)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_point_in_shadow"></a>
+    <strong>is_point_in_shadow (x, y, light_id)</strong>
+    </dt>
+    <dd>
+    check if point is in shadow (cpu query)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">light_id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_gpu_data"></a>
+    <strong>get_gpu_data ()</strong>
+    </dt>
+    <dd>
+    get raw gpu data
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        cdata/table lights, cdata/table occluders, number light_count, number occluder_count
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_stats"></a>
+    <strong>get_stats ()</strong>
+    </dt>
+    <dd>
+    get statistics
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear"></a>
+    <strong>clear ()</strong>
+    </dt>
+    <dd>
+    clear all data
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-11-21 12:57:45 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,1922 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>ai</strong></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ai</code></h1>
+<p>pathfinding, planning, behavior systems
+ optimized for luajit/lua 5.3+ with ieee 754 hex floats</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#heap.new">heap.new (compare)</a></td>
+	<td class="summary">create new binary heap</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#heap:push">heap:push (item)</a></td>
+	<td class="summary">push item onto heap</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#heap:pop">heap:pop ()</a></td>
+	<td class="summary">pop minimum item from heap</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#heap:empty">heap:empty ()</a></td>
+	<td class="summary">check if heap is empty</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#asp.grid">asp.grid (grid, sx, sy, gx, gy, heuristic)</a></td>
+	<td class="summary">find path on grid using a* algorithm</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#jps.grid">jps.grid (grid, sx, sy, gx, gy)</a></td>
+	<td class="summary">find path using jump point search optimization</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#navmesh.triangle">navmesh.triangle (v1, v2, v3)</a></td>
+	<td class="summary">create triangle</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#navmesh.new">navmesh.new (triangles)</a></td>
+	<td class="summary">create navigation mesh from triangles</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#navmesh.find_triangle">navmesh.find_triangle (mesh, x, y)</a></td>
+	<td class="summary">find triangle containing point</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#navmesh.find_path">navmesh.find_path (mesh, sx, sy, gx, gy)</a></td>
+	<td class="summary">find path through navmesh using a*</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.action">btree.action (func)</a></td>
+	<td class="summary">create action node</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.condition">btree.condition (func)</a></td>
+	<td class="summary">create condition node</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.sequence">btree.sequence (children)</a></td>
+	<td class="summary">create sequence node (all children must succeed)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.selector">btree.selector (children)</a></td>
+	<td class="summary">create selector node (first child to succeed wins)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.parallel">btree.parallel (children, success_count)</a></td>
+	<td class="summary">create parallel node (all children execute)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.decorator">btree.decorator (child, decorator_func)</a></td>
+	<td class="summary">create decorator node (modifies child result)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.inverter">btree.inverter (child)</a></td>
+	<td class="summary">create inverter node (inverts success/failure)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#btree.repeater">btree.repeater (child, count)</a></td>
+	<td class="summary">create repeater node (repeats child n times)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.consideration">utility.consideration (input_func, curve)</a></td>
+	<td class="summary">create consideration (input -> score curve)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.curve_linear">utility.curve_linear (slope, intercept)</a></td>
+	<td class="summary">linear curve</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.curve_quadratic">utility.curve_quadratic (exponent)</a></td>
+	<td class="summary">quadratic curve</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.curve_inverse">utility.curve_inverse ()</a></td>
+	<td class="summary">inverse curve (1 - x)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.curve_sigmoid">utility.curve_sigmoid (steepness, shift)</a></td>
+	<td class="summary">sigmoid curve</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.action">utility.action (name, considerations, execute)</a></td>
+	<td class="summary">create action with considerations</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#utility.select_action">utility.select_action (actions, context)</a></td>
+	<td class="summary">select best action from available actions</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hpa.new">hpa.new (grid, cluster_size)</a></td>
+	<td class="summary">create new hierarchical pathfinding structure</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#hpa.find_path">hpa.find_path (hpa, sx, sy, gx, gy)</a></td>
+	<td class="summary">find path using hierarchical pathfinding</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ffp.compute">ffp.compute (grid, gx, gy)</a></td>
+	<td class="summary">compute flow field for grid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ffp.follow">ffp.follow (field, x, y)</a></td>
+	<td class="summary">follow flow field at position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fsm.new">fsm.new (initial_state)</a></td>
+	<td class="summary">create new finite state machine</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fsm:add_state">fsm:add_state (name, enter, update, exit)</a></td>
+	<td class="summary">add state to machine</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fsm:add_substate">fsm:add_substate (parent, name, enter, update, exit)</a></td>
+	<td class="summary">add substate to parent state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fsm:change_state">fsm:change_state (new_state)</a></td>
+	<td class="summary">change to new state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fsm:update">fsm:update (dt)</a></td>
+	<td class="summary">update state machine</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fsm:current">fsm:current ()</a></td>
+	<td class="summary">get current state name</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#goap.action">goap.action (name, cost, preconditions, effects, perform)</a></td>
+	<td class="summary">create action definition</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#goap.state">goap.state (initial)</a></td>
+	<td class="summary">create world state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#goap.plan">goap.plan (current_state, goal_state, available_actions)</a></td>
+	<td class="summary">plan actions to reach goal using a* search</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.seek">steer.seek (agent, target, max_speed)</a></td>
+	<td class="summary">seek behavior - move toward target</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.flee">steer.flee (agent, threat, max_speed)</a></td>
+	<td class="summary">flee behavior - move away from threat</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.arrive">steer.arrive (agent, target, max_speed, slow_radius)</a></td>
+	<td class="summary">arrive behavior - slow down when approaching target</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.pursue">steer.pursue (agent, target, max_speed, predict_time)</a></td>
+	<td class="summary">pursue behavior - intercept moving target</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.evade">steer.evade (agent, threat, max_speed, predict_time)</a></td>
+	<td class="summary">evade behavior - escape moving threat</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.wander">steer.wander (agent, circle_dist, circle_radius, angle_change)</a></td>
+	<td class="summary">wander behavior - random wandering</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.separation">steer.separation (agent, neighbors, radius)</a></td>
+	<td class="summary">separation behavior - avoid crowding neighbors</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.alignment">steer.alignment (agent, neighbors, radius)</a></td>
+	<td class="summary">alignment behavior - steer toward average heading</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#steer.cohesion">steer.cohesion (agent, neighbors, radius, max_speed)</a></td>
+	<td class="summary">cohesion behavior - steer toward average position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#influence.new">influence.new (width, height, default_value)</a></td>
+	<td class="summary">create new influence map</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#influence.stamp">influence.stamp (map, x, y, value, radius, decay)</a></td>
+	<td class="summary">stamp influence at position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#influence.propagate">influence.propagate (map, momentum, decay_rate)</a></td>
+	<td class="summary">propagate influence across map</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#influence.get">influence.get (map, x, y)</a></td>
+	<td class="summary">get influence at position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#influence.combine">influence.combine (map1, map2, weight1, weight2)</a></td>
+	<td class="summary">combine two influence maps</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#spatial.grid_new">spatial.grid_new (cell_size, bounds)</a></td>
+	<td class="summary">create new spatial grid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#spatial.grid_insert">spatial.grid_insert (grid, obj, x, y)</a></td>
+	<td class="summary">insert object into spatial grid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#spatial.grid_query">spatial.grid_query (grid, x, y, radius)</a></td>
+	<td class="summary">query spatial grid for nearby objects</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#spatial.grid_clear">spatial.grid_clear (grid)</a></td>
+	<td class="summary">clear all objects from spatial grid</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "heap.new"></a>
+    <strong>heap.new (compare)</strong>
+    </dt>
+    <dd>
+    create new binary heap
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">compare</span>
+         comparison function (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table heap instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "heap:push"></a>
+    <strong>heap:push (item)</strong>
+    </dt>
+    <dd>
+    push item onto heap
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">item</span>
+         item to push
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "heap:pop"></a>
+    <strong>heap:pop ()</strong>
+    </dt>
+    <dd>
+    pop minimum item from heap
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any minimum item or nil if empty
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "heap:empty"></a>
+    <strong>heap:empty ()</strong>
+    </dt>
+    <dd>
+    check if heap is empty
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if empty
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "asp.grid"></a>
+    <strong>asp.grid (grid, sx, sy, gx, gy, heuristic)</strong>
+    </dt>
+    <dd>
+    find path on grid using a* algorithm
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         2d array of costs (0 = blocked, >0 = traversable)
+        </li>
+        <li><span class="parameter">sx</span>
+         start x coordinate
+        </li>
+        <li><span class="parameter">sy</span>
+         start y coordinate
+        </li>
+        <li><span class="parameter">gx</span>
+         goal x coordinate
+        </li>
+        <li><span class="parameter">gy</span>
+         goal y coordinate
+        </li>
+        <li><span class="parameter">heuristic</span>
+         heuristic function (optional, defaults to euclidean)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table path as array of {x, y} or nil if no path
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "jps.grid"></a>
+    <strong>jps.grid (grid, sx, sy, gx, gy)</strong>
+    </dt>
+    <dd>
+    find path using jump point search optimization
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         2d array of costs (0 = blocked, >0 = traversable)
+        </li>
+        <li><span class="parameter">sx</span>
+         start x coordinate
+        </li>
+        <li><span class="parameter">sy</span>
+         start y coordinate
+        </li>
+        <li><span class="parameter">gx</span>
+         goal x coordinate
+        </li>
+        <li><span class="parameter">gy</span>
+         goal y coordinate
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table path as array of {x, y} or nil if no path
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "navmesh.triangle"></a>
+    <strong>navmesh.triangle (v1, v2, v3)</strong>
+    </dt>
+    <dd>
+    create triangle
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v1</span>
+         vertex 1 {x, y}
+        </li>
+        <li><span class="parameter">v2</span>
+         vertex 2 {x, y}
+        </li>
+        <li><span class="parameter">v3</span>
+         vertex 3 {x, y}
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table triangle
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "navmesh.new"></a>
+    <strong>navmesh.new (triangles)</strong>
+    </dt>
+    <dd>
+    create navigation mesh from triangles
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">triangles</span>
+         array of triangles
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table navmesh instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "navmesh.find_triangle"></a>
+    <strong>navmesh.find_triangle (mesh, x, y)</strong>
+    </dt>
+    <dd>
+    find triangle containing point
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mesh</span>
+         navmesh
+        </li>
+        <li><span class="parameter">x</span>
+         point x
+        </li>
+        <li><span class="parameter">y</span>
+         point y
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table triangle or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "navmesh.find_path"></a>
+    <strong>navmesh.find_path (mesh, sx, sy, gx, gy)</strong>
+    </dt>
+    <dd>
+    find path through navmesh using a*
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mesh</span>
+         navmesh
+        </li>
+        <li><span class="parameter">sx</span>
+         start x
+        </li>
+        <li><span class="parameter">sy</span>
+         start y
+        </li>
+        <li><span class="parameter">gx</span>
+         goal x
+        </li>
+        <li><span class="parameter">gy</span>
+         goal y
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table path as array of {x, y} or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.action"></a>
+    <strong>btree.action (func)</strong>
+    </dt>
+    <dd>
+    create action node
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+         action function (context) -> state
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table action node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.condition"></a>
+    <strong>btree.condition (func)</strong>
+    </dt>
+    <dd>
+    create condition node
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+         condition function (context) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table condition node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.sequence"></a>
+    <strong>btree.sequence (children)</strong>
+    </dt>
+    <dd>
+    create sequence node (all children must succeed)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">children</span>
+         array of child nodes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table sequence node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.selector"></a>
+    <strong>btree.selector (children)</strong>
+    </dt>
+    <dd>
+    create selector node (first child to succeed wins)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">children</span>
+         array of child nodes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table selector node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.parallel"></a>
+    <strong>btree.parallel (children, success_count)</strong>
+    </dt>
+    <dd>
+    create parallel node (all children execute)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">children</span>
+         array of child nodes
+        </li>
+        <li><span class="parameter">success_count</span>
+         minimum successes needed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table parallel node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.decorator"></a>
+    <strong>btree.decorator (child, decorator_func)</strong>
+    </dt>
+    <dd>
+    create decorator node (modifies child result)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">child</span>
+         child node
+        </li>
+        <li><span class="parameter">decorator_func</span>
+         function(state) -> new_state
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table decorator node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.inverter"></a>
+    <strong>btree.inverter (child)</strong>
+    </dt>
+    <dd>
+    create inverter node (inverts success/failure)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">child</span>
+         child node
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table inverter node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "btree.repeater"></a>
+    <strong>btree.repeater (child, count)</strong>
+    </dt>
+    <dd>
+    create repeater node (repeats child n times)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">child</span>
+         child node
+        </li>
+        <li><span class="parameter">count</span>
+         repeat count
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table repeater node
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.consideration"></a>
+    <strong>utility.consideration (input_func, curve)</strong>
+    </dt>
+    <dd>
+    create consideration (input -> score curve)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">input_func</span>
+         function to get input value
+        </li>
+        <li><span class="parameter">curve</span>
+         curve function (x) -> y
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table consideration
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.curve_linear"></a>
+    <strong>utility.curve_linear (slope, intercept)</strong>
+    </dt>
+    <dd>
+    linear curve
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">slope</span>
+         slope of line
+        </li>
+        <li><span class="parameter">intercept</span>
+         y-intercept
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        function curve function
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.curve_quadratic"></a>
+    <strong>utility.curve_quadratic (exponent)</strong>
+    </dt>
+    <dd>
+    quadratic curve
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">exponent</span>
+         exponent (default 2)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        function curve function
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.curve_inverse"></a>
+    <strong>utility.curve_inverse ()</strong>
+    </dt>
+    <dd>
+    inverse curve (1 - x)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        function curve function
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.curve_sigmoid"></a>
+    <strong>utility.curve_sigmoid (steepness, shift)</strong>
+    </dt>
+    <dd>
+    sigmoid curve
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">steepness</span>
+         steepness factor
+        </li>
+        <li><span class="parameter">shift</span>
+         horizontal shift
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        function curve function
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.action"></a>
+    <strong>utility.action (name, considerations, execute)</strong>
+    </dt>
+    <dd>
+    create action with considerations
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         action name
+        </li>
+        <li><span class="parameter">considerations</span>
+         array of considerations
+        </li>
+        <li><span class="parameter">execute</span>
+         execution function
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table action
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "utility.select_action"></a>
+    <strong>utility.select_action (actions, context)</strong>
+    </dt>
+    <dd>
+    select best action from available actions
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">actions</span>
+         array of actions
+        </li>
+        <li><span class="parameter">context</span>
+         evaluation context
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table selected action or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hpa.new"></a>
+    <strong>hpa.new (grid, cluster_size)</strong>
+    </dt>
+    <dd>
+    create new hierarchical pathfinding structure
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         2d grid array
+        </li>
+        <li><span class="parameter">cluster_size</span>
+         size of clusters (default 10)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table hpa instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "hpa.find_path"></a>
+    <strong>hpa.find_path (hpa, sx, sy, gx, gy)</strong>
+    </dt>
+    <dd>
+    find path using hierarchical pathfinding
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">hpa</span>
+         hpa instance
+        </li>
+        <li><span class="parameter">sx</span>
+         start x
+        </li>
+        <li><span class="parameter">sy</span>
+         start y
+        </li>
+        <li><span class="parameter">gx</span>
+         goal x
+        </li>
+        <li><span class="parameter">gy</span>
+         goal y
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table path array
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ffp.compute"></a>
+    <strong>ffp.compute (grid, gx, gy)</strong>
+    </dt>
+    <dd>
+    compute flow field for grid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         2d grid array
+        </li>
+        <li><span class="parameter">gx</span>
+         goal x coordinate
+        </li>
+        <li><span class="parameter">gy</span>
+         goal y coordinate
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table flow field
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ffp.follow"></a>
+    <strong>ffp.follow (field, x, y)</strong>
+    </dt>
+    <dd>
+    follow flow field at position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">field</span>
+         flow field from ffp.compute
+        </li>
+        <li><span class="parameter">x</span>
+         current x position
+        </li>
+        <li><span class="parameter">y</span>
+         current y position
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number dx, number dy direction vector
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fsm.new"></a>
+    <strong>fsm.new (initial_state)</strong>
+    </dt>
+    <dd>
+    create new finite state machine
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">initial_state</span>
+         name of initial state
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table fsm instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fsm:add_state"></a>
+    <strong>fsm:add_state (name, enter, update, exit)</strong>
+    </dt>
+    <dd>
+    add state to machine
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         state name
+        </li>
+        <li><span class="parameter">enter</span>
+         enter callback (optional)
+        </li>
+        <li><span class="parameter">update</span>
+         update callback (optional)
+        </li>
+        <li><span class="parameter">exit</span>
+         exit callback (optional)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fsm:add_substate"></a>
+    <strong>fsm:add_substate (parent, name, enter, update, exit)</strong>
+    </dt>
+    <dd>
+    add substate to parent state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">parent</span>
+         parent state name
+        </li>
+        <li><span class="parameter">name</span>
+         substate name
+        </li>
+        <li><span class="parameter">enter</span>
+         enter callback (optional)
+        </li>
+        <li><span class="parameter">update</span>
+         update callback (optional)
+        </li>
+        <li><span class="parameter">exit</span>
+         exit callback (optional)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fsm:change_state"></a>
+    <strong>fsm:change_state (new_state)</strong>
+    </dt>
+    <dd>
+    change to new state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">new_state</span>
+         name of state to change to
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fsm:update"></a>
+    <strong>fsm:update (dt)</strong>
+    </dt>
+    <dd>
+    update state machine
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+         delta time
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fsm:current"></a>
+    <strong>fsm:current ()</strong>
+    </dt>
+    <dd>
+    get current state name
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string current state name
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "goap.action"></a>
+    <strong>goap.action (name, cost, preconditions, effects, perform)</strong>
+    </dt>
+    <dd>
+    create action definition
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         action name
+        </li>
+        <li><span class="parameter">cost</span>
+         action cost
+        </li>
+        <li><span class="parameter">preconditions</span>
+         table of required world state
+        </li>
+        <li><span class="parameter">effects</span>
+         table of state changes
+        </li>
+        <li><span class="parameter">perform</span>
+         perform callback (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table action
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "goap.state"></a>
+    <strong>goap.state (initial)</strong>
+    </dt>
+    <dd>
+    create world state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">initial</span>
+         initial state table (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table state
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "goap.plan"></a>
+    <strong>goap.plan (current_state, goal_state, available_actions)</strong>
+    </dt>
+    <dd>
+    plan actions to reach goal using a* search
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">current_state</span>
+         current world state
+        </li>
+        <li><span class="parameter">goal_state</span>
+         desired world state
+        </li>
+        <li><span class="parameter">available_actions</span>
+         array of available actions
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table plan as array of actions, or nil if no plan
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.seek"></a>
+    <strong>steer.seek (agent, target, max_speed)</strong>
+    </dt>
+    <dd>
+    seek behavior - move toward target
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">target</span>
+         target with x, y
+        </li>
+        <li><span class="parameter">max_speed</span>
+         maximum speed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.flee"></a>
+    <strong>steer.flee (agent, threat, max_speed)</strong>
+    </dt>
+    <dd>
+    flee behavior - move away from threat
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">threat</span>
+         threat with x, y
+        </li>
+        <li><span class="parameter">max_speed</span>
+         maximum speed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.arrive"></a>
+    <strong>steer.arrive (agent, target, max_speed, slow_radius)</strong>
+    </dt>
+    <dd>
+    arrive behavior - slow down when approaching target
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">target</span>
+         target with x, y
+        </li>
+        <li><span class="parameter">max_speed</span>
+         maximum speed
+        </li>
+        <li><span class="parameter">slow_radius</span>
+         radius to start slowing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.pursue"></a>
+    <strong>steer.pursue (agent, target, max_speed, predict_time)</strong>
+    </dt>
+    <dd>
+    pursue behavior - intercept moving target
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">target</span>
+         target with x, y, vx, vy
+        </li>
+        <li><span class="parameter">max_speed</span>
+         maximum speed
+        </li>
+        <li><span class="parameter">predict_time</span>
+         prediction time (default 1.0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.evade"></a>
+    <strong>steer.evade (agent, threat, max_speed, predict_time)</strong>
+    </dt>
+    <dd>
+    evade behavior - escape moving threat
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">threat</span>
+         threat with x, y, vx, vy
+        </li>
+        <li><span class="parameter">max_speed</span>
+         maximum speed
+        </li>
+        <li><span class="parameter">predict_time</span>
+         prediction time (default 1.0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.wander"></a>
+    <strong>steer.wander (agent, circle_dist, circle_radius, angle_change)</strong>
+    </dt>
+    <dd>
+    wander behavior - random wandering
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy, wander_angle
+        </li>
+        <li><span class="parameter">circle_dist</span>
+         circle distance ahead
+        </li>
+        <li><span class="parameter">circle_radius</span>
+         circle radius
+        </li>
+        <li><span class="parameter">angle_change</span>
+         maximum angle change
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.separation"></a>
+    <strong>steer.separation (agent, neighbors, radius)</strong>
+    </dt>
+    <dd>
+    separation behavior - avoid crowding neighbors
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y
+        </li>
+        <li><span class="parameter">neighbors</span>
+         array of neighbor agents
+        </li>
+        <li><span class="parameter">radius</span>
+         separation radius
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.alignment"></a>
+    <strong>steer.alignment (agent, neighbors, radius)</strong>
+    </dt>
+    <dd>
+    alignment behavior - steer toward average heading
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">neighbors</span>
+         array of neighbor agents
+        </li>
+        <li><span class="parameter">radius</span>
+         alignment radius
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "steer.cohesion"></a>
+    <strong>steer.cohesion (agent, neighbors, radius, max_speed)</strong>
+    </dt>
+    <dd>
+    cohesion behavior - steer toward average position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">agent</span>
+         agent with x, y, vx, vy
+        </li>
+        <li><span class="parameter">neighbors</span>
+         array of neighbor agents
+        </li>
+        <li><span class="parameter">radius</span>
+         cohesion radius
+        </li>
+        <li><span class="parameter">max_speed</span>
+         maximum speed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number fx, number fy steering force
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "influence.new"></a>
+    <strong>influence.new (width, height, default_value)</strong>
+    </dt>
+    <dd>
+    create new influence map
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">width</span>
+         map width
+        </li>
+        <li><span class="parameter">height</span>
+         map height
+        </li>
+        <li><span class="parameter">default_value</span>
+         default cell value (default 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table influence map
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "influence.stamp"></a>
+    <strong>influence.stamp (map, x, y, value, radius, decay)</strong>
+    </dt>
+    <dd>
+    stamp influence at position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map</span>
+         influence map
+        </li>
+        <li><span class="parameter">x</span>
+         x coordinate
+        </li>
+        <li><span class="parameter">y</span>
+         y coordinate
+        </li>
+        <li><span class="parameter">value</span>
+         influence value
+        </li>
+        <li><span class="parameter">radius</span>
+         influence radius
+        </li>
+        <li><span class="parameter">decay</span>
+         decay rate (default 1.0)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "influence.propagate"></a>
+    <strong>influence.propagate (map, momentum, decay_rate)</strong>
+    </dt>
+    <dd>
+    propagate influence across map
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map</span>
+         influence map
+        </li>
+        <li><span class="parameter">momentum</span>
+         momentum factor (0-1)
+        </li>
+        <li><span class="parameter">decay_rate</span>
+         decay rate (0-1)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "influence.get"></a>
+    <strong>influence.get (map, x, y)</strong>
+    </dt>
+    <dd>
+    get influence at position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map</span>
+         influence map
+        </li>
+        <li><span class="parameter">x</span>
+         x coordinate
+        </li>
+        <li><span class="parameter">y</span>
+         y coordinate
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number influence value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "influence.combine"></a>
+    <strong>influence.combine (map1, map2, weight1, weight2)</strong>
+    </dt>
+    <dd>
+    combine two influence maps
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">map1</span>
+         first influence map
+        </li>
+        <li><span class="parameter">map2</span>
+         second influence map
+        </li>
+        <li><span class="parameter">weight1</span>
+         weight for first map
+        </li>
+        <li><span class="parameter">weight2</span>
+         weight for second map
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table combined influence map
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "spatial.grid_new"></a>
+    <strong>spatial.grid_new (cell_size, bounds)</strong>
+    </dt>
+    <dd>
+    create new spatial grid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cell_size</span>
+         size of each cell
+        </li>
+        <li><span class="parameter">bounds</span>
+         bounds as {x1, y1, x2, y2}
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table spatial grid
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "spatial.grid_insert"></a>
+    <strong>spatial.grid_insert (grid, obj, x, y)</strong>
+    </dt>
+    <dd>
+    insert object into spatial grid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         spatial grid
+        </li>
+        <li><span class="parameter">obj</span>
+         object to insert
+        </li>
+        <li><span class="parameter">x</span>
+         x position
+        </li>
+        <li><span class="parameter">y</span>
+         y position
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "spatial.grid_query"></a>
+    <strong>spatial.grid_query (grid, x, y, radius)</strong>
+    </dt>
+    <dd>
+    query spatial grid for nearby objects
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         spatial grid
+        </li>
+        <li><span class="parameter">x</span>
+         query x position
+        </li>
+        <li><span class="parameter">y</span>
+         query y position
+        </li>
+        <li><span class="parameter">radius</span>
+         query radius
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of {obj, dist}
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "spatial.grid_clear"></a>
+    <strong>spatial.grid_clear (grid)</strong>
+    </dt>
+    <dd>
+    clear all objects from spatial grid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">grid</span>
+         spatial grid
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

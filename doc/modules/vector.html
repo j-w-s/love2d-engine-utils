@@ -1,0 +1,2126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><strong>vector</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>vector</code></h1>
+<p>vector math library (vec2, vec3, vec4)
+ optimized for luajit with ffi, allocation sinking, ieee 754 hex floats
+ uses row-major storage for cache efficiency and simd-friendly access patterns</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#set">set (self, x, y)</a></td>
+	<td class="summary">set components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#copy">copy (self, v)</a></td>
+	<td class="summary">copy from another vec2</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone">clone (self)</a></td>
+	<td class="summary">clone to new vec2</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, v)</a></td>
+	<td class="summary">add vector (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub (self, v)</a></td>
+	<td class="summary">subtract vector (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul">mul (self, s)</a></td>
+	<td class="summary">multiply by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#div">div (self, s)</a></td>
+	<td class="summary">divide by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neg">neg (self)</a></td>
+	<td class="summary">negate (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dot">dot (self, v)</a></td>
+	<td class="summary">dot product</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cross">cross (self, v)</a></td>
+	<td class="summary">cross product (returns scalar z-component)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#len2">len2 (self)</a></td>
+	<td class="summary">length squared (avoid sqrt when comparing distances)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#len">len (self)</a></td>
+	<td class="summary">length</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dist2">dist2 (self, v)</a></td>
+	<td class="summary">distance squared to another vector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dist">dist (self, v)</a></td>
+	<td class="summary">distance to another vector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#normalize">normalize (self)</a></td>
+	<td class="summary">normalize (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#lerp">lerp (self, v, t)</a></td>
+	<td class="summary">linear interpolation (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#reflect">reflect (self, n)</a></td>
+	<td class="summary">reflect vector off surface with given normal</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotate">rotate (self, angle)</a></td>
+	<td class="summary">rotate by angle (radians, in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#angle">angle (self)</a></td>
+	<td class="summary">angle in radians</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#angle_to">angle_to (self, v)</a></td>
+	<td class="summary">angle between two vectors</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#perp">perp (self)</a></td>
+	<td class="summary">perpendicular vector (90 degrees ccw)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#floor">floor (self)</a></td>
+	<td class="summary">floor components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ceil">ceil (self)</a></td>
+	<td class="summary">ceil components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#abs">abs (self)</a></td>
+	<td class="summary">absolute value of components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#min">min (self, v)</a></td>
+	<td class="summary">component-wise min</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#max">max (self, v)</a></td>
+	<td class="summary">component-wise max</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clamp">clamp (self, min_val, max_val)</a></td>
+	<td class="summary">clamp components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#unpack">unpack (self)</a></td>
+	<td class="summary">unpack components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set">set (self, x, y, z)</a></td>
+	<td class="summary">set components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#copy">copy (self, v)</a></td>
+	<td class="summary">copy from another vec3</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone">clone (self)</a></td>
+	<td class="summary">clone to new vec3</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, v)</a></td>
+	<td class="summary">add vector (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub (self, v)</a></td>
+	<td class="summary">subtract vector (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul">mul (self, s)</a></td>
+	<td class="summary">multiply by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#div">div (self, s)</a></td>
+	<td class="summary">divide by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neg">neg (self)</a></td>
+	<td class="summary">negate (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dot">dot (self, v)</a></td>
+	<td class="summary">dot product</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cross">cross (self, v)</a></td>
+	<td class="summary">cross product (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#len2">len2 (self)</a></td>
+	<td class="summary">length squared</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#len">len (self)</a></td>
+	<td class="summary">length</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dist2">dist2 (self, v)</a></td>
+	<td class="summary">distance squared to another vector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dist">dist (self, v)</a></td>
+	<td class="summary">distance to another vector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#normalize">normalize (self)</a></td>
+	<td class="summary">normalize (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#lerp">lerp (self, v, t)</a></td>
+	<td class="summary">linear interpolation (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#reflect">reflect (self, n)</a></td>
+	<td class="summary">reflect vector off surface with given normal</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#refract">refract (self, n, eta)</a></td>
+	<td class="summary">refract vector through surface with given normal and ratio</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotate_axis">rotate_axis (self, axis, angle)</a></td>
+	<td class="summary">rotate around axis by angle (radians, in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#angle_to">angle_to (self, v)</a></td>
+	<td class="summary">angle between two vectors</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#floor">floor (self)</a></td>
+	<td class="summary">floor components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ceil">ceil (self)</a></td>
+	<td class="summary">ceil components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#abs">abs (self)</a></td>
+	<td class="summary">absolute value of components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#min">min (self, v)</a></td>
+	<td class="summary">component-wise min</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#max">max (self, v)</a></td>
+	<td class="summary">component-wise max</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clamp">clamp (self, min_val, max_val)</a></td>
+	<td class="summary">clamp components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#unpack">unpack (self)</a></td>
+	<td class="summary">unpack components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set">set (self, x, y, z, w)</a></td>
+	<td class="summary">set components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#copy">copy (self, v)</a></td>
+	<td class="summary">copy from another vec4</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone">clone (self)</a></td>
+	<td class="summary">clone to new vec4</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, v)</a></td>
+	<td class="summary">add vector (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub (self, v)</a></td>
+	<td class="summary">subtract vector (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul">mul (self, s)</a></td>
+	<td class="summary">multiply by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#div">div (self, s)</a></td>
+	<td class="summary">divide by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#neg">neg (self)</a></td>
+	<td class="summary">negate (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dot">dot (self, v)</a></td>
+	<td class="summary">dot product</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#len2">len2 (self)</a></td>
+	<td class="summary">length squared</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#len">len (self)</a></td>
+	<td class="summary">length</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dist2">dist2 (self, v)</a></td>
+	<td class="summary">distance squared to another vector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dist">dist (self, v)</a></td>
+	<td class="summary">distance to another vector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#normalize">normalize (self)</a></td>
+	<td class="summary">normalize (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#lerp">lerp (self, v, t)</a></td>
+	<td class="summary">linear interpolation (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#floor">floor (self)</a></td>
+	<td class="summary">floor components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ceil">ceil (self)</a></td>
+	<td class="summary">ceil components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#abs">abs (self)</a></td>
+	<td class="summary">absolute value of components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#min">min (self, v)</a></td>
+	<td class="summary">component-wise min</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#max">max (self, v)</a></td>
+	<td class="summary">component-wise max</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clamp">clamp (self, min_val, max_val)</a></td>
+	<td class="summary">clamp components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#unpack">unpack (self)</a></td>
+	<td class="summary">unpack components</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "set"></a>
+    <strong>set (self, x, y)</strong>
+    </dt>
+    <dd>
+    set components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "copy"></a>
+    <strong>copy (self, v)</strong>
+    </dt>
+    <dd>
+    copy from another vec2
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone"></a>
+    <strong>clone (self)</strong>
+    </dt>
+    <dd>
+    clone to new vec2
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, v)</strong>
+    </dt>
+    <dd>
+    add vector (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sub"></a>
+    <strong>sub (self, v)</strong>
+    </dt>
+    <dd>
+    subtract vector (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul"></a>
+    <strong>mul (self, s)</strong>
+    </dt>
+    <dd>
+    multiply by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "div"></a>
+    <strong>div (self, s)</strong>
+    </dt>
+    <dd>
+    divide by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neg"></a>
+    <strong>neg (self)</strong>
+    </dt>
+    <dd>
+    negate (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dot"></a>
+    <strong>dot (self, v)</strong>
+    </dt>
+    <dd>
+    dot product
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cross"></a>
+    <strong>cross (self, v)</strong>
+    </dt>
+    <dd>
+    cross product (returns scalar z-component)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "len2"></a>
+    <strong>len2 (self)</strong>
+    </dt>
+    <dd>
+    length squared (avoid sqrt when comparing distances)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "len"></a>
+    <strong>len (self)</strong>
+    </dt>
+    <dd>
+    length
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dist2"></a>
+    <strong>dist2 (self, v)</strong>
+    </dt>
+    <dd>
+    distance squared to another vector
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dist"></a>
+    <strong>dist (self, v)</strong>
+    </dt>
+    <dd>
+    distance to another vector
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "normalize"></a>
+    <strong>normalize (self)</strong>
+    </dt>
+    <dd>
+    normalize (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "lerp"></a>
+    <strong>lerp (self, v, t)</strong>
+    </dt>
+    <dd>
+    linear interpolation (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+        <li><span class="parameter">t</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "reflect"></a>
+    <strong>reflect (self, n)</strong>
+    </dt>
+    <dd>
+    reflect vector off surface with given normal
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">n</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotate"></a>
+    <strong>rotate (self, angle)</strong>
+    </dt>
+    <dd>
+    rotate by angle (radians, in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "angle"></a>
+    <strong>angle (self)</strong>
+    </dt>
+    <dd>
+    angle in radians
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "angle_to"></a>
+    <strong>angle_to (self, v)</strong>
+    </dt>
+    <dd>
+    angle between two vectors
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "perp"></a>
+    <strong>perp (self)</strong>
+    </dt>
+    <dd>
+    perpendicular vector (90 degrees ccw)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "floor"></a>
+    <strong>floor (self)</strong>
+    </dt>
+    <dd>
+    floor components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ceil"></a>
+    <strong>ceil (self)</strong>
+    </dt>
+    <dd>
+    ceil components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "abs"></a>
+    <strong>abs (self)</strong>
+    </dt>
+    <dd>
+    absolute value of components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "min"></a>
+    <strong>min (self, v)</strong>
+    </dt>
+    <dd>
+    component-wise min
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "max"></a>
+    <strong>max (self, v)</strong>
+    </dt>
+    <dd>
+    component-wise max
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clamp"></a>
+    <strong>clamp (self, min_val, max_val)</strong>
+    </dt>
+    <dd>
+    clamp components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">min_val</span>
+
+        </li>
+        <li><span class="parameter">max_val</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "unpack"></a>
+    <strong>unpack (self)</strong>
+    </dt>
+    <dd>
+    unpack components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set"></a>
+    <strong>set (self, x, y, z)</strong>
+    </dt>
+    <dd>
+    set components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">z</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "copy"></a>
+    <strong>copy (self, v)</strong>
+    </dt>
+    <dd>
+    copy from another vec3
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone"></a>
+    <strong>clone (self)</strong>
+    </dt>
+    <dd>
+    clone to new vec3
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, v)</strong>
+    </dt>
+    <dd>
+    add vector (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sub"></a>
+    <strong>sub (self, v)</strong>
+    </dt>
+    <dd>
+    subtract vector (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul"></a>
+    <strong>mul (self, s)</strong>
+    </dt>
+    <dd>
+    multiply by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "div"></a>
+    <strong>div (self, s)</strong>
+    </dt>
+    <dd>
+    divide by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neg"></a>
+    <strong>neg (self)</strong>
+    </dt>
+    <dd>
+    negate (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dot"></a>
+    <strong>dot (self, v)</strong>
+    </dt>
+    <dd>
+    dot product
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cross"></a>
+    <strong>cross (self, v)</strong>
+    </dt>
+    <dd>
+    cross product (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "len2"></a>
+    <strong>len2 (self)</strong>
+    </dt>
+    <dd>
+    length squared
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "len"></a>
+    <strong>len (self)</strong>
+    </dt>
+    <dd>
+    length
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dist2"></a>
+    <strong>dist2 (self, v)</strong>
+    </dt>
+    <dd>
+    distance squared to another vector
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dist"></a>
+    <strong>dist (self, v)</strong>
+    </dt>
+    <dd>
+    distance to another vector
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "normalize"></a>
+    <strong>normalize (self)</strong>
+    </dt>
+    <dd>
+    normalize (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "lerp"></a>
+    <strong>lerp (self, v, t)</strong>
+    </dt>
+    <dd>
+    linear interpolation (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+        <li><span class="parameter">t</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "reflect"></a>
+    <strong>reflect (self, n)</strong>
+    </dt>
+    <dd>
+    reflect vector off surface with given normal
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">n</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "refract"></a>
+    <strong>refract (self, n, eta)</strong>
+    </dt>
+    <dd>
+    refract vector through surface with given normal and ratio
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">n</span>
+
+        </li>
+        <li><span class="parameter">eta</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotate_axis"></a>
+    <strong>rotate_axis (self, axis, angle)</strong>
+    </dt>
+    <dd>
+    rotate around axis by angle (radians, in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">axis</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "angle_to"></a>
+    <strong>angle_to (self, v)</strong>
+    </dt>
+    <dd>
+    angle between two vectors
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "floor"></a>
+    <strong>floor (self)</strong>
+    </dt>
+    <dd>
+    floor components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ceil"></a>
+    <strong>ceil (self)</strong>
+    </dt>
+    <dd>
+    ceil components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "abs"></a>
+    <strong>abs (self)</strong>
+    </dt>
+    <dd>
+    absolute value of components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "min"></a>
+    <strong>min (self, v)</strong>
+    </dt>
+    <dd>
+    component-wise min
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "max"></a>
+    <strong>max (self, v)</strong>
+    </dt>
+    <dd>
+    component-wise max
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clamp"></a>
+    <strong>clamp (self, min_val, max_val)</strong>
+    </dt>
+    <dd>
+    clamp components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">min_val</span>
+
+        </li>
+        <li><span class="parameter">max_val</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "unpack"></a>
+    <strong>unpack (self)</strong>
+    </dt>
+    <dd>
+    unpack components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set"></a>
+    <strong>set (self, x, y, z, w)</strong>
+    </dt>
+    <dd>
+    set components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">z</span>
+
+        </li>
+        <li><span class="parameter">w</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "copy"></a>
+    <strong>copy (self, v)</strong>
+    </dt>
+    <dd>
+    copy from another vec4
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone"></a>
+    <strong>clone (self)</strong>
+    </dt>
+    <dd>
+    clone to new vec4
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, v)</strong>
+    </dt>
+    <dd>
+    add vector (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sub"></a>
+    <strong>sub (self, v)</strong>
+    </dt>
+    <dd>
+    subtract vector (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul"></a>
+    <strong>mul (self, s)</strong>
+    </dt>
+    <dd>
+    multiply by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "div"></a>
+    <strong>div (self, s)</strong>
+    </dt>
+    <dd>
+    divide by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "neg"></a>
+    <strong>neg (self)</strong>
+    </dt>
+    <dd>
+    negate (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dot"></a>
+    <strong>dot (self, v)</strong>
+    </dt>
+    <dd>
+    dot product
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "len2"></a>
+    <strong>len2 (self)</strong>
+    </dt>
+    <dd>
+    length squared
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "len"></a>
+    <strong>len (self)</strong>
+    </dt>
+    <dd>
+    length
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dist2"></a>
+    <strong>dist2 (self, v)</strong>
+    </dt>
+    <dd>
+    distance squared to another vector
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dist"></a>
+    <strong>dist (self, v)</strong>
+    </dt>
+    <dd>
+    distance to another vector
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "normalize"></a>
+    <strong>normalize (self)</strong>
+    </dt>
+    <dd>
+    normalize (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "lerp"></a>
+    <strong>lerp (self, v, t)</strong>
+    </dt>
+    <dd>
+    linear interpolation (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+        <li><span class="parameter">t</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "floor"></a>
+    <strong>floor (self)</strong>
+    </dt>
+    <dd>
+    floor components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ceil"></a>
+    <strong>ceil (self)</strong>
+    </dt>
+    <dd>
+    ceil components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "abs"></a>
+    <strong>abs (self)</strong>
+    </dt>
+    <dd>
+    absolute value of components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "min"></a>
+    <strong>min (self, v)</strong>
+    </dt>
+    <dd>
+    component-wise min
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "max"></a>
+    <strong>max (self, v)</strong>
+    </dt>
+    <dd>
+    component-wise max
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clamp"></a>
+    <strong>clamp (self, min_val, max_val)</strong>
+    </dt>
+    <dd>
+    clamp components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">min_val</span>
+
+        </li>
+        <li><span class="parameter">max_val</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "unpack"></a>
+    <strong>unpack (self)</strong>
+    </dt>
+    <dd>
+    unpack components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

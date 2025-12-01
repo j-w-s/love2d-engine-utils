@@ -1,0 +1,731 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><strong>camera</strong></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>camera</code></h1>
+<p>camera system</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (x, y, zoom, rot)</a></td>
+	<td class="summary">create a new camera</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_position">set_position (x, y)</a></td>
+	<td class="summary">set camera position directly</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_position">get_position ()</a></td>
+	<td class="summary">get camera position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_target">set_target (x, y)</a></td>
+	<td class="summary">set target position for tracking</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#move">move (dx, dy)</a></td>
+	<td class="summary">move camera relative to current position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_zoom">set_zoom (z)</a></td>
+	<td class="summary">set zoom level directly</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_zoom">get_zoom ()</a></td>
+	<td class="summary">get current zoom level</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zoom_to">zoom_to (z)</a></td>
+	<td class="summary">set target zoom level</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_rotation">set_rotation (r)</a></td>
+	<td class="summary">set rotation directly (radians)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_rotation">get_rotation ()</a></td>
+	<td class="summary">get current rotation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotate_to">rotate_to (r)</a></td>
+	<td class="summary">set target rotation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_mode">set_mode (mode)</a></td>
+	<td class="summary">set tracking mode</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_lerp_speed">set_lerp_speed (pos_speed, zoom_speed, rot_speed)</a></td>
+	<td class="summary">set lerp speeds</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_bounds">set_bounds (x, y, w, h)</a></td>
+	<td class="summary">set world bounds</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_bounds">clear_bounds ()</a></td>
+	<td class="summary">clear world bounds</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_deadzone">set_deadzone (x, y, w, h)</a></td>
+	<td class="summary">set deadzone for window mode</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_deadzone">clear_deadzone ()</a></td>
+	<td class="summary">clear deadzone</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#shake">shake (amount, duration)</a></td>
+	<td class="summary">trigger camera shake</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (dt)</a></td>
+	<td class="summary">update camera state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update_matrices">update_matrices ()</a></td>
+	<td class="summary">update internal matrices</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#apply">apply ()</a></td>
+	<td class="summary">apply camera transform to love.graphics</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#screen_to_world">screen_to_world (x, y)</a></td>
+	<td class="summary">convert screen coordinates to world coordinates</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#world_to_screen">world_to_screen (x, y)</a></td>
+	<td class="summary">convert world coordinates to screen coordinates</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resize">resize (w, h)</a></td>
+	<td class="summary">resize camera viewport</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_view_matrix">get_view_matrix ()</a></td>
+	<td class="summary">get view matrix (for shaders)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (x, y, zoom, rot)</strong>
+    </dt>
+    <dd>
+    create a new camera
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number|nil initial x position
+        </li>
+        <li><span class="parameter">y</span>
+         number|nil initial y position
+        </li>
+        <li><span class="parameter">zoom</span>
+         number|nil initial zoom level
+        </li>
+        <li><span class="parameter">rot</span>
+         number|nil initial rotation (radians)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table camera instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_position"></a>
+    <strong>set_position (x, y)</strong>
+    </dt>
+    <dd>
+    set camera position directly
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_position"></a>
+    <strong>get_position ()</strong>
+    </dt>
+    <dd>
+    get camera position
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number x, number y
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_target"></a>
+    <strong>set_target (x, y)</strong>
+    </dt>
+    <dd>
+    set target position for tracking
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "move"></a>
+    <strong>move (dx, dy)</strong>
+    </dt>
+    <dd>
+    move camera relative to current position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dx</span>
+         number
+        </li>
+        <li><span class="parameter">dy</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_zoom"></a>
+    <strong>set_zoom (z)</strong>
+    </dt>
+    <dd>
+    set zoom level directly
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">z</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_zoom"></a>
+    <strong>get_zoom ()</strong>
+    </dt>
+    <dd>
+    get current zoom level
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "zoom_to"></a>
+    <strong>zoom_to (z)</strong>
+    </dt>
+    <dd>
+    set target zoom level
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">z</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_rotation"></a>
+    <strong>set_rotation (r)</strong>
+    </dt>
+    <dd>
+    set rotation directly (radians)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_rotation"></a>
+    <strong>get_rotation ()</strong>
+    </dt>
+    <dd>
+    get current rotation
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotate_to"></a>
+    <strong>rotate_to (r)</strong>
+    </dt>
+    <dd>
+    set target rotation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_mode"></a>
+    <strong>set_mode (mode)</strong>
+    </dt>
+    <dd>
+    set tracking mode
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mode</span>
+         string "locked", "smooth", "window", "look_ahead"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_lerp_speed"></a>
+    <strong>set_lerp_speed (pos_speed, zoom_speed, rot_speed)</strong>
+    </dt>
+    <dd>
+    set lerp speeds
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pos_speed</span>
+         number
+        </li>
+        <li><span class="parameter">zoom_speed</span>
+         number|nil
+        </li>
+        <li><span class="parameter">rot_speed</span>
+         number|nil
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_bounds"></a>
+    <strong>set_bounds (x, y, w, h)</strong>
+    </dt>
+    <dd>
+    set world bounds
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number|nil
+        </li>
+        <li><span class="parameter">y</span>
+         number|nil
+        </li>
+        <li><span class="parameter">w</span>
+         number|nil
+        </li>
+        <li><span class="parameter">h</span>
+         number|nil
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_bounds"></a>
+    <strong>clear_bounds ()</strong>
+    </dt>
+    <dd>
+    clear world bounds
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_deadzone"></a>
+    <strong>set_deadzone (x, y, w, h)</strong>
+    </dt>
+    <dd>
+    set deadzone for window mode
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+        <li><span class="parameter">w</span>
+         number
+        </li>
+        <li><span class="parameter">h</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_deadzone"></a>
+    <strong>clear_deadzone ()</strong>
+    </dt>
+    <dd>
+    clear deadzone
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "shake"></a>
+    <strong>shake (amount, duration)</strong>
+    </dt>
+    <dd>
+    trigger camera shake
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">amount</span>
+         number intensity
+        </li>
+        <li><span class="parameter">duration</span>
+         number seconds
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (dt)</strong>
+    </dt>
+    <dd>
+    update camera state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+         number delta time
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update_matrices"></a>
+    <strong>update_matrices ()</strong>
+    </dt>
+    <dd>
+    update internal matrices
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "apply"></a>
+    <strong>apply ()</strong>
+    </dt>
+    <dd>
+    apply camera transform to love.graphics
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "screen_to_world"></a>
+    <strong>screen_to_world (x, y)</strong>
+    </dt>
+    <dd>
+    convert screen coordinates to world coordinates
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number wx, number wy
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "world_to_screen"></a>
+    <strong>world_to_screen (x, y)</strong>
+    </dt>
+    <dd>
+    convert world coordinates to screen coordinates
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number sx, number sy
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "resize"></a>
+    <strong>resize (w, h)</strong>
+    </dt>
+    <dd>
+    resize camera viewport
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">w</span>
+         number
+        </li>
+        <li><span class="parameter">h</span>
+         number
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_view_matrix"></a>
+    <strong>get_view_matrix ()</strong>
+    </dt>
+    <dd>
+    get view matrix (for shaders)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table mat4
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

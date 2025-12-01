@@ -1,0 +1,1535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><strong>renderer</strong></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>renderer</code></h1>
+<p>initialize the renderer</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#set_clear_color">set_clear_color (r, g, b)</a></td>
+	<td class="summary">set the canvas clear color</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_batch_size">set_batch_size (texture, size)</a></td>
+	<td class="summary">set pre-allocated batch size for a texture</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_default_batch_size">set_default_batch_size (size)</a></td>
+	<td class="summary">set default batch size</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_layer_blend_mode">set_layer_blend_mode (layer, mode, alphamode)</a></td>
+	<td class="summary">set blend mode for a layer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_layer_blend_mode">clear_layer_blend_mode (layer)</a></td>
+	<td class="summary">clear blend mode for a layer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_layer_shader">set_layer_shader (layer, shader, uniforms)</a></td>
+	<td class="summary">set shader for a layer with optional uniforms</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update_layer_shader_uniforms">update_layer_shader_uniforms (layer, uniforms)</a></td>
+	<td class="summary">update shader uniforms for a layer without changing the shader</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_layer_shader">clear_layer_shader (layer)</a></td>
+	<td class="summary">clear shader for a layer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_layer_visible">set_layer_visible (layer, visible)</a></td>
+	<td class="summary">set layer visibility</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_layer_visible">get_layer_visible (layer)</a></td>
+	<td class="summary">get layer visibility</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_layer_opacity">set_layer_opacity (layer, opacity)</a></td>
+	<td class="summary">set layer opacity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_layer_opacity">get_layer_opacity (layer)</a></td>
+	<td class="summary">get layer opacity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_post_process">add_post_process (shader, uniforms, blend_mode)</a></td>
+	<td class="summary">add a post-processing effect to the stack</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update_post_process_uniforms">update_post_process_uniforms (index, uniforms)</a></td>
+	<td class="summary">update uniforms for a post-processing effect</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#remove_post_process">remove_post_process (index)</a></td>
+	<td class="summary">remove a post-processing effect from the stack</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_post_process">clear_post_process ()</a></td>
+	<td class="summary">clear all post-processing effects</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_atlas">create_atlas (id, texture, tile_width, tile_height)</a></td>
+	<td class="summary">create a texture atlas</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_atlas_quad">get_atlas_quad (atlas_id, index)</a></td>
+	<td class="summary">get quad from atlas</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_animation">create_animation (frames, frame_duration, loop)</a></td>
+	<td class="summary">create a sprite animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update_animations">update_animations (dt)</a></td>
+	<td class="summary">update animations</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play_animation">play_animation (animation_id)</a></td>
+	<td class="summary">play animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pause_animation">pause_animation (animation_id)</a></td>
+	<td class="summary">pause animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#reset_animation">reset_animation (animation_id)</a></td>
+	<td class="summary">reset animation to first frame</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_animation_frame">get_animation_frame (animation_id)</a></td>
+	<td class="summary">get current frame from animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (dt)</a></td>
+	<td class="summary">update camera (shake, lerp, etc)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_active_camera">set_active_camera (cam)</a></td>
+	<td class="summary">set active camera</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_active_camera">get_active_camera ()</a></td>
+	<td class="summary">get active camera</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_static_layer">create_static_layer (layer, draw_function)</a></td>
+	<td class="summary">create a static layer canvas with dirty flag support</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mark_static_layer_dirty">mark_static_layer_dirty (layer)</a></td>
+	<td class="summary">mark a static layer as dirty (needs redraw)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update_static_layers">update_static_layers ()</a></td>
+	<td class="summary">redraw dirty static layers</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_static_layer">clear_static_layer (layer)</a></td>
+	<td class="summary">clear a cached static layer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_all_static_layers">clear_all_static_layers ()</a></td>
+	<td class="summary">clear all cached static layers</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_sprite">draw_sprite (layer, texture, x, y, quad, options)</a></td>
+	<td class="summary">add a dynamic sprite to the draw queue (hot path)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_atlas_sprite">draw_atlas_sprite (layer, atlas_id, tile_index, x, y, options)</a></td>
+	<td class="summary">draw sprite from atlas</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_animated_sprite">draw_animated_sprite (layer, animation_id, x, y, options)</a></td>
+	<td class="summary">draw animated sprite</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_rect">draw_rect (layer, mode, x, y, w, h, color)</a></td>
+	<td class="summary">add a rectangle primitive to the dynamic draw queue</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_circle">draw_circle (layer, mode, x, y, radius, color, segments)</a></td>
+	<td class="summary">add a circle primitive to the dynamic draw queue</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_line">draw_line (layer, points, color)</a></td>
+	<td class="summary">add a line primitive to the dynamic draw queue</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_polygon">draw_polygon (layer, mode, points, color)</a></td>
+	<td class="summary">add a polygon primitive to the dynamic draw queue</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_arc">draw_arc (layer, mode, x, y, radius, angle1, angle2, color, segments)</a></td>
+	<td class="summary">add an arc primitive to the dynamic draw queue</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#camera_look_at">camera_look_at (x, y)</a></td>
+	<td class="summary">look at a world position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_camera_zoom">set_camera_zoom (zoom)</a></td>
+	<td class="summary">set camera zoom</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_camera_zoom">get_camera_zoom ()</a></td>
+	<td class="summary">get camera zoom</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_camera_rotation">set_camera_rotation (rotation)</a></td>
+	<td class="summary">set camera rotation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_camera_rotation">get_camera_rotation ()</a></td>
+	<td class="summary">get camera rotation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_viewport">set_viewport (x, y, w, h)</a></td>
+	<td class="summary">set viewport/scissor region</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_viewport">clear_viewport ()</a></td>
+	<td class="summary">clear viewport/scissor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_frustum_culling">set_frustum_culling (enabled)</a></td>
+	<td class="summary">enable or disable frustum culling</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_stats">get_stats ()</a></td>
+	<td class="summary">get render statistics</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#world_to_screen">world_to_screen (world_x, world_y)</a></td>
+	<td class="summary">world to screen coordinates</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#screen_to_world">screen_to_world (screen_x, screen_y)</a></td>
+	<td class="summary">screen to world coordinates</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#present">present ()</a></td>
+	<td class="summary">present all draw queues to the screen (main draw function)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#submit_lighting">submit_lighting (lights, count, occluders, occ_count, ambient)</a></td>
+	<td class="summary">submit lighting data for this frame</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "set_clear_color"></a>
+    <strong>set_clear_color (r, g, b)</strong>
+    </dt>
+    <dd>
+    set the canvas clear color
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+
+        </li>
+        <li><span class="parameter">g</span>
+
+        </li>
+        <li><span class="parameter">b</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_batch_size"></a>
+    <strong>set_batch_size (texture, size)</strong>
+    </dt>
+    <dd>
+    set pre-allocated batch size for a texture
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">texture</span>
+
+        </li>
+        <li><span class="parameter">size</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_default_batch_size"></a>
+    <strong>set_default_batch_size (size)</strong>
+    </dt>
+    <dd>
+    set default batch size
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_layer_blend_mode"></a>
+    <strong>set_layer_blend_mode (layer, mode, alphamode)</strong>
+    </dt>
+    <dd>
+    set blend mode for a layer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">mode</span>
+
+        </li>
+        <li><span class="parameter">alphamode</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_layer_blend_mode"></a>
+    <strong>clear_layer_blend_mode (layer)</strong>
+    </dt>
+    <dd>
+    clear blend mode for a layer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_layer_shader"></a>
+    <strong>set_layer_shader (layer, shader, uniforms)</strong>
+    </dt>
+    <dd>
+    set shader for a layer with optional uniforms
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+         number layer index
+        </li>
+        <li><span class="parameter">shader</span>
+         Shader love2d shader object
+        </li>
+        <li><span class="parameter">uniforms</span>
+         table optional uniform name-value pairs
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update_layer_shader_uniforms"></a>
+    <strong>update_layer_shader_uniforms (layer, uniforms)</strong>
+    </dt>
+    <dd>
+    update shader uniforms for a layer without changing the shader
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+         number layer index
+        </li>
+        <li><span class="parameter">uniforms</span>
+         table uniform name-value pairs to update
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_layer_shader"></a>
+    <strong>clear_layer_shader (layer)</strong>
+    </dt>
+    <dd>
+    clear shader for a layer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_layer_visible"></a>
+    <strong>set_layer_visible (layer, visible)</strong>
+    </dt>
+    <dd>
+    set layer visibility
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">visible</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_layer_visible"></a>
+    <strong>get_layer_visible (layer)</strong>
+    </dt>
+    <dd>
+    get layer visibility
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_layer_opacity"></a>
+    <strong>set_layer_opacity (layer, opacity)</strong>
+    </dt>
+    <dd>
+    set layer opacity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">opacity</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_layer_opacity"></a>
+    <strong>get_layer_opacity (layer)</strong>
+    </dt>
+    <dd>
+    get layer opacity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_post_process"></a>
+    <strong>add_post_process (shader, uniforms, blend_mode)</strong>
+    </dt>
+    <dd>
+    add a post-processing effect to the stack
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">shader</span>
+         Shader love2d shader object
+        </li>
+        <li><span class="parameter">uniforms</span>
+         table optional uniform name-value pairs
+        </li>
+        <li><span class="parameter">blend_mode</span>
+         table optional {mode = "add", alpha = "alphamultiply"}
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update_post_process_uniforms"></a>
+    <strong>update_post_process_uniforms (index, uniforms)</strong>
+    </dt>
+    <dd>
+    update uniforms for a post-processing effect
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+         number position in the post-process stack (1-based)
+        </li>
+        <li><span class="parameter">uniforms</span>
+         table uniform name-value pairs to update
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "remove_post_process"></a>
+    <strong>remove_post_process (index)</strong>
+    </dt>
+    <dd>
+    remove a post-processing effect from the stack
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+         number position in the post-process stack (1-based)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_post_process"></a>
+    <strong>clear_post_process ()</strong>
+    </dt>
+    <dd>
+    clear all post-processing effects
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_atlas"></a>
+    <strong>create_atlas (id, texture, tile_width, tile_height)</strong>
+    </dt>
+    <dd>
+    create a texture atlas
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+
+        </li>
+        <li><span class="parameter">texture</span>
+
+        </li>
+        <li><span class="parameter">tile_width</span>
+
+        </li>
+        <li><span class="parameter">tile_height</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_atlas_quad"></a>
+    <strong>get_atlas_quad (atlas_id, index)</strong>
+    </dt>
+    <dd>
+    get quad from atlas
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">atlas_id</span>
+
+        </li>
+        <li><span class="parameter">index</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Quad, error
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_animation"></a>
+    <strong>create_animation (frames, frame_duration, loop)</strong>
+    </dt>
+    <dd>
+    create a sprite animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frames</span>
+
+        </li>
+        <li><span class="parameter">frame_duration</span>
+
+        </li>
+        <li><span class="parameter">loop</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update_animations"></a>
+    <strong>update_animations (dt)</strong>
+    </dt>
+    <dd>
+    update animations
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "play_animation"></a>
+    <strong>play_animation (animation_id)</strong>
+    </dt>
+    <dd>
+    play animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">animation_id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pause_animation"></a>
+    <strong>pause_animation (animation_id)</strong>
+    </dt>
+    <dd>
+    pause animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">animation_id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "reset_animation"></a>
+    <strong>reset_animation (animation_id)</strong>
+    </dt>
+    <dd>
+    reset animation to first frame
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">animation_id</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_animation_frame"></a>
+    <strong>get_animation_frame (animation_id)</strong>
+    </dt>
+    <dd>
+    get current frame from animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">animation_id</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        atlas_id, tile_index or nil, error
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (dt)</strong>
+    </dt>
+    <dd>
+    update camera (shake, lerp, etc)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+        update animations
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_active_camera"></a>
+    <strong>set_active_camera (cam)</strong>
+    </dt>
+    <dd>
+    set active camera
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cam</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_active_camera"></a>
+    <strong>get_active_camera ()</strong>
+    </dt>
+    <dd>
+    get active camera
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_static_layer"></a>
+    <strong>create_static_layer (layer, draw_function)</strong>
+    </dt>
+    <dd>
+    create a static layer canvas with dirty flag support
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">draw_function</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mark_static_layer_dirty"></a>
+    <strong>mark_static_layer_dirty (layer)</strong>
+    </dt>
+    <dd>
+    mark a static layer as dirty (needs redraw)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update_static_layers"></a>
+    <strong>update_static_layers ()</strong>
+    </dt>
+    <dd>
+    redraw dirty static layers
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_static_layer"></a>
+    <strong>clear_static_layer (layer)</strong>
+    </dt>
+    <dd>
+    clear a cached static layer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_all_static_layers"></a>
+    <strong>clear_all_static_layers ()</strong>
+    </dt>
+    <dd>
+    clear all cached static layers
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_sprite"></a>
+    <strong>draw_sprite (layer, texture, x, y, quad, options)</strong>
+    </dt>
+    <dd>
+    add a dynamic sprite to the draw queue (hot path)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">texture</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">quad</span>
+
+        </li>
+        <li><span class="parameter">options</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_atlas_sprite"></a>
+    <strong>draw_atlas_sprite (layer, atlas_id, tile_index, x, y, options)</strong>
+    </dt>
+    <dd>
+    draw sprite from atlas
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">atlas_id</span>
+
+        </li>
+        <li><span class="parameter">tile_index</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">options</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_animated_sprite"></a>
+    <strong>draw_animated_sprite (layer, animation_id, x, y, options)</strong>
+    </dt>
+    <dd>
+    draw animated sprite
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">animation_id</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">options</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_rect"></a>
+    <strong>draw_rect (layer, mode, x, y, w, h, color)</strong>
+    </dt>
+    <dd>
+    add a rectangle primitive to the dynamic draw queue
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">mode</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">w</span>
+
+        </li>
+        <li><span class="parameter">h</span>
+
+        </li>
+        <li><span class="parameter">color</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_circle"></a>
+    <strong>draw_circle (layer, mode, x, y, radius, color, segments)</strong>
+    </dt>
+    <dd>
+    add a circle primitive to the dynamic draw queue
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">mode</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">radius</span>
+
+        </li>
+        <li><span class="parameter">color</span>
+
+        </li>
+        <li><span class="parameter">segments</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_line"></a>
+    <strong>draw_line (layer, points, color)</strong>
+    </dt>
+    <dd>
+    add a line primitive to the dynamic draw queue
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">points</span>
+
+        </li>
+        <li><span class="parameter">color</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_polygon"></a>
+    <strong>draw_polygon (layer, mode, points, color)</strong>
+    </dt>
+    <dd>
+    add a polygon primitive to the dynamic draw queue
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">mode</span>
+
+        </li>
+        <li><span class="parameter">points</span>
+
+        </li>
+        <li><span class="parameter">color</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_arc"></a>
+    <strong>draw_arc (layer, mode, x, y, radius, angle1, angle2, color, segments)</strong>
+    </dt>
+    <dd>
+    add an arc primitive to the dynamic draw queue
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">layer</span>
+
+        </li>
+        <li><span class="parameter">mode</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">radius</span>
+
+        </li>
+        <li><span class="parameter">angle1</span>
+
+        </li>
+        <li><span class="parameter">angle2</span>
+
+        </li>
+        <li><span class="parameter">color</span>
+
+        </li>
+        <li><span class="parameter">segments</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "camera_look_at"></a>
+    <strong>camera_look_at (x, y)</strong>
+    </dt>
+    <dd>
+    look at a world position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_camera_zoom"></a>
+    <strong>set_camera_zoom (zoom)</strong>
+    </dt>
+    <dd>
+    set camera zoom
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">zoom</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_camera_zoom"></a>
+    <strong>get_camera_zoom ()</strong>
+    </dt>
+    <dd>
+    get camera zoom
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_camera_rotation"></a>
+    <strong>set_camera_rotation (rotation)</strong>
+    </dt>
+    <dd>
+    set camera rotation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">rotation</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_camera_rotation"></a>
+    <strong>get_camera_rotation ()</strong>
+    </dt>
+    <dd>
+    get camera rotation
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_viewport"></a>
+    <strong>set_viewport (x, y, w, h)</strong>
+    </dt>
+    <dd>
+    set viewport/scissor region
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">w</span>
+
+        </li>
+        <li><span class="parameter">h</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_viewport"></a>
+    <strong>clear_viewport ()</strong>
+    </dt>
+    <dd>
+    clear viewport/scissor
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_frustum_culling"></a>
+    <strong>set_frustum_culling (enabled)</strong>
+    </dt>
+    <dd>
+    enable or disable frustum culling
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">enabled</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_stats"></a>
+    <strong>get_stats ()</strong>
+    </dt>
+    <dd>
+    get render statistics
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "world_to_screen"></a>
+    <strong>world_to_screen (world_x, world_y)</strong>
+    </dt>
+    <dd>
+    world to screen coordinates
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">world_x</span>
+
+        </li>
+        <li><span class="parameter">world_y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "screen_to_world"></a>
+    <strong>screen_to_world (screen_x, screen_y)</strong>
+    </dt>
+    <dd>
+    screen to world coordinates
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">screen_x</span>
+
+        </li>
+        <li><span class="parameter">screen_y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "present"></a>
+    <strong>present ()</strong>
+    </dt>
+    <dd>
+    present all draw queues to the screen (main draw function)
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "submit_lighting"></a>
+    <strong>submit_lighting (lights, count, occluders, occ_count, ambient)</strong>
+    </dt>
+    <dd>
+    submit lighting data for this frame
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lights</span>
+         cdata|table light data
+        </li>
+        <li><span class="parameter">count</span>
+         number number of lights
+        </li>
+        <li><span class="parameter">occluders</span>
+         cdata|table occluder data
+        </li>
+        <li><span class="parameter">occ_count</span>
+         number number of occluders
+        </li>
+        <li><span class="parameter">ambient</span>
+         table {r,g,b}
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

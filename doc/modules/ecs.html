@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><strong>ecs</strong></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ecs</code></h1>
+<p>register callback when component is added</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, comp_type, data)</a></td>
+	<td class="summary">add component to entity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#remove">remove (self, comp_type)</a></td>
+	<td class="summary">remove component from entity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (self, comp_type)</a></td>
+	<td class="summary">get component data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#has">has (self, comp_type)</a></td>
+	<td class="summary">check if entity has component</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#destroy">destroy (self)</a></td>
+	<td class="summary">destroy entity and remove all components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#valid">valid (self)</a></td>
+	<td class="summary">check if entity is valid (exists in world)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#with">with (self, ...)</a></td>
+	<td class="summary">require components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#without">without (self, ...)</a></td>
+	<td class="summary">exclude components</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#each">each (self, callback)</a></td>
+	<td class="summary">iterate matching entities (hot path optimized - zero allocation)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#count">count (self)</a></td>
+	<td class="summary">count matching entities</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#first">first (self)</a></td>
+	<td class="summary">get first matching entity</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, comp_type, data)</strong>
+    </dt>
+    <dd>
+    add component to entity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table the entity
+        </li>
+        <li><span class="parameter">comp_type</span>
+         component type
+        </li>
+        <li><span class="parameter">data</span>
+         component data
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table self for chaining
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "remove"></a>
+    <strong>remove (self, comp_type)</strong>
+    </dt>
+    <dd>
+    remove component from entity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table the entity
+        </li>
+        <li><span class="parameter">comp_type</span>
+         component type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table self for chaining
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (self, comp_type)</strong>
+    </dt>
+    <dd>
+    get component data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table the entity
+        </li>
+        <li><span class="parameter">comp_type</span>
+         component type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any component data or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "has"></a>
+    <strong>has (self, comp_type)</strong>
+    </dt>
+    <dd>
+    check if entity has component
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table the entity
+        </li>
+        <li><span class="parameter">comp_type</span>
+         component type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if has component
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "destroy"></a>
+    <strong>destroy (self)</strong>
+    </dt>
+    <dd>
+    destroy entity and remove all components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table the entity
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "valid"></a>
+    <strong>valid (self)</strong>
+    </dt>
+    <dd>
+    check if entity is valid (exists in world)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table the entity
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if valid
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "with"></a>
+    <strong>with (self, ...)</strong>
+    </dt>
+    <dd>
+    require components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table query builder
+        </li>
+        <li><span class="parameter">...</span>
+         component types
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table self for chaining
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "without"></a>
+    <strong>without (self, ...)</strong>
+    </dt>
+    <dd>
+    exclude components
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table query builder
+        </li>
+        <li><span class="parameter">...</span>
+         component types
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table self for chaining
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "each"></a>
+    <strong>each (self, callback)</strong>
+    </dt>
+    <dd>
+    iterate matching entities (hot path optimized - zero allocation)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+         table query builder
+        </li>
+        <li><span class="parameter">callback</span>
+         function(entity, comp1, comp2, ...) receives components as varargs
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "count"></a>
+    <strong>count (self)</strong>
+    </dt>
+    <dd>
+    count matching entities
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number count
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "first"></a>
+    <strong>first (self)</strong>
+    </dt>
+    <dd>
+    get first matching entity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table entity or nil
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

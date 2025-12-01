@@ -1,0 +1,1770 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><strong>matrix</strong></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>matrix</code></h1>
+<p>matrix math library (mat2, mat3, mat4)
+ optimized for luajit with ffi, allocation sinking, ieee 754 hex floats
+ uses row-major storage for cache efficiency and simd-friendly sequential access
+ matrices stored as contiguous arrays of rows for optimal memory locality</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#set">set (self, m00, m01, m10, m11)</a></td>
+	<td class="summary">set from values (row-major order)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#copy">copy (self, mat)</a></td>
+	<td class="summary">copy from another mat2</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone">clone (self)</a></td>
+	<td class="summary">clone to new mat2</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#identity">identity (self)</a></td>
+	<td class="summary">set to identity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zero">zero (self)</a></td>
+	<td class="summary">set to zero matrix</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transpose">transpose (self)</a></td>
+	<td class="summary">transpose (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#det">det (self)</a></td>
+	<td class="summary">determinant</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#invert">invert (self)</a></td>
+	<td class="summary">inverse (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul_scalar">mul_scalar (self, s)</a></td>
+	<td class="summary">multiply by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul">mul (self, mat)</a></td>
+	<td class="summary">multiply by another mat2 (in-place: self = self * mat)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, mat)</a></td>
+	<td class="summary">add another mat2 (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub (self, mat)</a></td>
+	<td class="summary">subtract another mat2 (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation">rotation (self, angle)</a></td>
+	<td class="summary">rotation matrix (radians) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#scale">scale (self, sx, sy)</a></td>
+	<td class="summary">scale matrix - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set">set (self, m00, m01, m02, m10, m11, m12, m20, m21, m22)</a></td>
+	<td class="summary">set from values (row-major order)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#copy">copy (self, mat)</a></td>
+	<td class="summary">copy from another mat3</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone">clone (self)</a></td>
+	<td class="summary">clone to new mat3</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#identity">identity (self)</a></td>
+	<td class="summary">set to identity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zero">zero (self)</a></td>
+	<td class="summary">set to zero matrix</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transpose">transpose (self)</a></td>
+	<td class="summary">transpose (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#det">det (self)</a></td>
+	<td class="summary">determinant</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#invert">invert (self)</a></td>
+	<td class="summary">inverse (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul_scalar">mul_scalar (self, s)</a></td>
+	<td class="summary">multiply by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul">mul (self, mat)</a></td>
+	<td class="summary">multiply by another mat3 (in-place: self = self * mat)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, mat)</a></td>
+	<td class="summary">add another mat3 (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub (self, mat)</a></td>
+	<td class="summary">subtract another mat3 (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_x">rotation_x (self, angle)</a></td>
+	<td class="summary">rotation matrix around x-axis (radians) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_y">rotation_y (self, angle)</a></td>
+	<td class="summary">rotation matrix around y-axis (radians) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_z">rotation_z (self, angle)</a></td>
+	<td class="summary">rotation matrix around z-axis (radians) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_euler">rotation_euler (self, x, y, z)</a></td>
+	<td class="summary">rotation matrix from euler angles (radians, xyz order) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#scale">scale (self, sx, sy, sz)</a></td>
+	<td class="summary">scale matrix - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#translation">translation (self, x, y)</a></td>
+	<td class="summary">translation matrix (2d in 3x3 homogeneous coords) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#unpack">unpack (self)</a></td>
+	<td class="summary">unpack for shader uniform</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set">set (self, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33)</a></td>
+	<td class="summary">set from values (row-major order)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#copy">copy (self, mat)</a></td>
+	<td class="summary">copy from another mat4</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone">clone (self)</a></td>
+	<td class="summary">clone to new mat4</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#identity">identity (self)</a></td>
+	<td class="summary">set to identity</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zero">zero (self)</a></td>
+	<td class="summary">set to zero matrix</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transpose">transpose (self)</a></td>
+	<td class="summary">transpose (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#det">det (self)</a></td>
+	<td class="summary">determinant</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#invert">invert (self)</a></td>
+	<td class="summary">inverse (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul_scalar">mul_scalar (self, s)</a></td>
+	<td class="summary">multiply by scalar (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mul">mul (self, mat)</a></td>
+	<td class="summary">multiply by another mat4 (in-place: self = self * mat)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (self, mat)</a></td>
+	<td class="summary">add another mat4 (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub (self, mat)</a></td>
+	<td class="summary">subtract another mat4 (in-place)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_x">rotation_x (self, angle)</a></td>
+	<td class="summary">apply rotation around x-axis (radians) to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_y">rotation_y (self, angle)</a></td>
+	<td class="summary">apply rotation around y-axis (radians) to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_z">rotation_z (self, angle)</a></td>
+	<td class="summary">apply rotation around z-axis (radians) to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_euler">rotation_euler (self, x, y, z)</a></td>
+	<td class="summary">apply rotation from euler angles (radians, xyz order) to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rotation_axis">rotation_axis (self, axis, angle)</a></td>
+	<td class="summary">apply rotation from axis and angle (radians) to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#scale">scale (self, sx, sy, sz)</a></td>
+	<td class="summary">apply scale to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#translation">translation (self, x, y, z)</a></td>
+	<td class="summary">apply translation to self</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#perspective">perspective (self, fov, aspect, near, far)</a></td>
+	<td class="summary">perspective projection matrix (right-handed) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#orthographic">orthographic (self, left, right, bottom, top, near, far)</a></td>
+	<td class="summary">orthographic projection matrix (right-handed) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#look_at">look_at (self, eye, target, up)</a></td>
+	<td class="summary">look-at view matrix (right-handed) - OVERWRITES</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transform_point">transform_point (self, v)</a></td>
+	<td class="summary">transform vec3 by matrix (w = 1, point transformation)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transform_direction">transform_direction (self, v)</a></td>
+	<td class="summary">transform vec3 by matrix (w = 0, direction transformation)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_position">get_position (self)</a></td>
+	<td class="summary">extract position from transformation matrix</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_scale">get_scale (self)</a></td>
+	<td class="summary">extract scale from transformation matrix</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "set"></a>
+    <strong>set (self, m00, m01, m10, m11)</strong>
+    </dt>
+    <dd>
+    set from values (row-major order)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">m00</span>
+
+        </li>
+        <li><span class="parameter">m01</span>
+
+        </li>
+        <li><span class="parameter">m10</span>
+
+        </li>
+        <li><span class="parameter">m11</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "copy"></a>
+    <strong>copy (self, mat)</strong>
+    </dt>
+    <dd>
+    copy from another mat2
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone"></a>
+    <strong>clone (self)</strong>
+    </dt>
+    <dd>
+    clone to new mat2
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "identity"></a>
+    <strong>identity (self)</strong>
+    </dt>
+    <dd>
+    set to identity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "zero"></a>
+    <strong>zero (self)</strong>
+    </dt>
+    <dd>
+    set to zero matrix
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "transpose"></a>
+    <strong>transpose (self)</strong>
+    </dt>
+    <dd>
+    transpose (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "det"></a>
+    <strong>det (self)</strong>
+    </dt>
+    <dd>
+    determinant
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "invert"></a>
+    <strong>invert (self)</strong>
+    </dt>
+    <dd>
+    inverse (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul_scalar"></a>
+    <strong>mul_scalar (self, s)</strong>
+    </dt>
+    <dd>
+    multiply by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul"></a>
+    <strong>mul (self, mat)</strong>
+    </dt>
+    <dd>
+    multiply by another mat2 (in-place: self = self * mat)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, mat)</strong>
+    </dt>
+    <dd>
+    add another mat2 (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sub"></a>
+    <strong>sub (self, mat)</strong>
+    </dt>
+    <dd>
+    subtract another mat2 (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation"></a>
+    <strong>rotation (self, angle)</strong>
+    </dt>
+    <dd>
+    rotation matrix (radians) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "scale"></a>
+    <strong>scale (self, sx, sy)</strong>
+    </dt>
+    <dd>
+    scale matrix - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">sx</span>
+
+        </li>
+        <li><span class="parameter">sy</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set"></a>
+    <strong>set (self, m00, m01, m02, m10, m11, m12, m20, m21, m22)</strong>
+    </dt>
+    <dd>
+    set from values (row-major order)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">m00</span>
+
+        </li>
+        <li><span class="parameter">m01</span>
+
+        </li>
+        <li><span class="parameter">m02</span>
+
+        </li>
+        <li><span class="parameter">m10</span>
+
+        </li>
+        <li><span class="parameter">m11</span>
+
+        </li>
+        <li><span class="parameter">m12</span>
+
+        </li>
+        <li><span class="parameter">m20</span>
+
+        </li>
+        <li><span class="parameter">m21</span>
+
+        </li>
+        <li><span class="parameter">m22</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "copy"></a>
+    <strong>copy (self, mat)</strong>
+    </dt>
+    <dd>
+    copy from another mat3
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone"></a>
+    <strong>clone (self)</strong>
+    </dt>
+    <dd>
+    clone to new mat3
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "identity"></a>
+    <strong>identity (self)</strong>
+    </dt>
+    <dd>
+    set to identity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "zero"></a>
+    <strong>zero (self)</strong>
+    </dt>
+    <dd>
+    set to zero matrix
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "transpose"></a>
+    <strong>transpose (self)</strong>
+    </dt>
+    <dd>
+    transpose (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "det"></a>
+    <strong>det (self)</strong>
+    </dt>
+    <dd>
+    determinant
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "invert"></a>
+    <strong>invert (self)</strong>
+    </dt>
+    <dd>
+    inverse (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul_scalar"></a>
+    <strong>mul_scalar (self, s)</strong>
+    </dt>
+    <dd>
+    multiply by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul"></a>
+    <strong>mul (self, mat)</strong>
+    </dt>
+    <dd>
+    multiply by another mat3 (in-place: self = self * mat)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, mat)</strong>
+    </dt>
+    <dd>
+    add another mat3 (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sub"></a>
+    <strong>sub (self, mat)</strong>
+    </dt>
+    <dd>
+    subtract another mat3 (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_x"></a>
+    <strong>rotation_x (self, angle)</strong>
+    </dt>
+    <dd>
+    rotation matrix around x-axis (radians) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_y"></a>
+    <strong>rotation_y (self, angle)</strong>
+    </dt>
+    <dd>
+    rotation matrix around y-axis (radians) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_z"></a>
+    <strong>rotation_z (self, angle)</strong>
+    </dt>
+    <dd>
+    rotation matrix around z-axis (radians) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_euler"></a>
+    <strong>rotation_euler (self, x, y, z)</strong>
+    </dt>
+    <dd>
+    rotation matrix from euler angles (radians, xyz order) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">z</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "scale"></a>
+    <strong>scale (self, sx, sy, sz)</strong>
+    </dt>
+    <dd>
+    scale matrix - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">sx</span>
+
+        </li>
+        <li><span class="parameter">sy</span>
+
+        </li>
+        <li><span class="parameter">sz</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "translation"></a>
+    <strong>translation (self, x, y)</strong>
+    </dt>
+    <dd>
+    translation matrix (2d in 3x3 homogeneous coords) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "unpack"></a>
+    <strong>unpack (self)</strong>
+    </dt>
+    <dd>
+    unpack for shader uniform
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set"></a>
+    <strong>set (self, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33)</strong>
+    </dt>
+    <dd>
+    set from values (row-major order)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">m00</span>
+
+        </li>
+        <li><span class="parameter">m01</span>
+
+        </li>
+        <li><span class="parameter">m02</span>
+
+        </li>
+        <li><span class="parameter">m03</span>
+
+        </li>
+        <li><span class="parameter">m10</span>
+
+        </li>
+        <li><span class="parameter">m11</span>
+
+        </li>
+        <li><span class="parameter">m12</span>
+
+        </li>
+        <li><span class="parameter">m13</span>
+
+        </li>
+        <li><span class="parameter">m20</span>
+
+        </li>
+        <li><span class="parameter">m21</span>
+
+        </li>
+        <li><span class="parameter">m22</span>
+
+        </li>
+        <li><span class="parameter">m23</span>
+
+        </li>
+        <li><span class="parameter">m30</span>
+
+        </li>
+        <li><span class="parameter">m31</span>
+
+        </li>
+        <li><span class="parameter">m32</span>
+
+        </li>
+        <li><span class="parameter">m33</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "copy"></a>
+    <strong>copy (self, mat)</strong>
+    </dt>
+    <dd>
+    copy from another mat4
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone"></a>
+    <strong>clone (self)</strong>
+    </dt>
+    <dd>
+    clone to new mat4
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "identity"></a>
+    <strong>identity (self)</strong>
+    </dt>
+    <dd>
+    set to identity
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "zero"></a>
+    <strong>zero (self)</strong>
+    </dt>
+    <dd>
+    set to zero matrix
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "transpose"></a>
+    <strong>transpose (self)</strong>
+    </dt>
+    <dd>
+    transpose (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "det"></a>
+    <strong>det (self)</strong>
+    </dt>
+    <dd>
+    determinant
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "invert"></a>
+    <strong>invert (self)</strong>
+    </dt>
+    <dd>
+    inverse (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul_scalar"></a>
+    <strong>mul_scalar (self, s)</strong>
+    </dt>
+    <dd>
+    multiply by scalar (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">s</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "mul"></a>
+    <strong>mul (self, mat)</strong>
+    </dt>
+    <dd>
+    multiply by another mat4 (in-place: self = self * mat)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (self, mat)</strong>
+    </dt>
+    <dd>
+    add another mat4 (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sub"></a>
+    <strong>sub (self, mat)</strong>
+    </dt>
+    <dd>
+    subtract another mat4 (in-place)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">mat</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_x"></a>
+    <strong>rotation_x (self, angle)</strong>
+    </dt>
+    <dd>
+    apply rotation around x-axis (radians) to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_y"></a>
+    <strong>rotation_y (self, angle)</strong>
+    </dt>
+    <dd>
+    apply rotation around y-axis (radians) to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_z"></a>
+    <strong>rotation_z (self, angle)</strong>
+    </dt>
+    <dd>
+    apply rotation around z-axis (radians) to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_euler"></a>
+    <strong>rotation_euler (self, x, y, z)</strong>
+    </dt>
+    <dd>
+    apply rotation from euler angles (radians, xyz order) to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">z</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rotation_axis"></a>
+    <strong>rotation_axis (self, axis, angle)</strong>
+    </dt>
+    <dd>
+    apply rotation from axis and angle (radians) to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">axis</span>
+
+        </li>
+        <li><span class="parameter">angle</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "scale"></a>
+    <strong>scale (self, sx, sy, sz)</strong>
+    </dt>
+    <dd>
+    apply scale to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">sx</span>
+
+        </li>
+        <li><span class="parameter">sy</span>
+
+        </li>
+        <li><span class="parameter">sz</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "translation"></a>
+    <strong>translation (self, x, y, z)</strong>
+    </dt>
+    <dd>
+    apply translation to self
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">x</span>
+
+        </li>
+        <li><span class="parameter">y</span>
+
+        </li>
+        <li><span class="parameter">z</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "perspective"></a>
+    <strong>perspective (self, fov, aspect, near, far)</strong>
+    </dt>
+    <dd>
+    perspective projection matrix (right-handed) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">fov</span>
+
+        </li>
+        <li><span class="parameter">aspect</span>
+
+        </li>
+        <li><span class="parameter">near</span>
+
+        </li>
+        <li><span class="parameter">far</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "orthographic"></a>
+    <strong>orthographic (self, left, right, bottom, top, near, far)</strong>
+    </dt>
+    <dd>
+    orthographic projection matrix (right-handed) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">left</span>
+
+        </li>
+        <li><span class="parameter">right</span>
+
+        </li>
+        <li><span class="parameter">bottom</span>
+
+        </li>
+        <li><span class="parameter">top</span>
+
+        </li>
+        <li><span class="parameter">near</span>
+
+        </li>
+        <li><span class="parameter">far</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "look_at"></a>
+    <strong>look_at (self, eye, target, up)</strong>
+    </dt>
+    <dd>
+    look-at view matrix (right-handed) - OVERWRITES
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">eye</span>
+
+        </li>
+        <li><span class="parameter">target</span>
+
+        </li>
+        <li><span class="parameter">up</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "transform_point"></a>
+    <strong>transform_point (self, v)</strong>
+    </dt>
+    <dd>
+    transform vec3 by matrix (w = 1, point transformation)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "transform_direction"></a>
+    <strong>transform_direction (self, v)</strong>
+    </dt>
+    <dd>
+    transform vec3 by matrix (w = 0, direction transformation)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_position"></a>
+    <strong>get_position (self)</strong>
+    </dt>
+    <dd>
+    extract position from transformation matrix
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_scale"></a>
+    <strong>get_scale (self)</strong>
+    </dt>
+    <dd>
+    extract scale from transformation matrix
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">self</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

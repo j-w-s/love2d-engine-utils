@@ -1,0 +1,1680 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><strong>luna</strong></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>luna</code></h1>
+<p>query library.</p>
+<p>
+ a high-performance, lazy iterator library inspired by linq and rust.
+ **attempted** lua-native zero-cost abstractions with fusion optimization and early termination.</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#from">from (data)</a></td>
+	<td class="summary">create iterator from table/string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#range">range (a, b, c)</a></td>
+	<td class="summary">create range iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rep">rep (value, count)</a></td>
+	<td class="summary">create repeat iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#unfold">unfold (seed, func)</a></td>
+	<td class="summary">create unfold iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#where">where (predicate)</a></td>
+	<td class="summary">filter by predicate</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#select">select (transform)</a></td>
+	<td class="summary">transform values</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#memoize">memoize (predicate)</a></td>
+	<td class="summary">transform values with memoized predicate</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#parallel_map">parallel_map (transform, batch_size)</a></td>
+	<td class="summary">parallel map using coroutines</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#chunk">chunk (size)</a></td>
+	<td class="summary">chunk elements into batches</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#take">take (n)</a></td>
+	<td class="summary">take first n elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#skip">skip (n)</a></td>
+	<td class="summary">skip first n elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#reverse">reverse ()</a></td>
+	<td class="summary">reverse element order</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#order">order (comparator)</a></td>
+	<td class="summary">sort elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#distinct">distinct (key_func)</a></td>
+	<td class="summary">filter distinct elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#flatten">flatten (depth)</a></td>
+	<td class="summary">flatten nested tables</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#window">window (size, step)</a></td>
+	<td class="summary">create sliding windows</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#scan">scan (initial, func)</a></td>
+	<td class="summary">accumulate with function</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zip">zip (other)</a></td>
+	<td class="summary">zip with another iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#unzip">unzip ()</a></td>
+	<td class="summary">unzip paired elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#intersperse">intersperse (separator)</a></td>
+	<td class="summary">intersperse separator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#lag">lag (n, default)</a></td>
+	<td class="summary">lag elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#find">find (predicate)</a></td>
+	<td class="summary">find first matching element</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#between">between (start_val, end_val)</a></td>
+	<td class="summary">select elements between markers</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#union">union (other)</a></td>
+	<td class="summary">union with another iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#intersection">intersection (other)</a></td>
+	<td class="summary">intersection with another iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#complement">complement (other)</a></td>
+	<td class="summary">complement with another iterator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#join">join (other, key_selector, other_key_selector, result_selector)</a></td>
+	<td class="summary">inner join</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ljoin">ljoin (other, key_selector, other_key_selector, result_selector)</a></td>
+	<td class="summary">left join</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#rjoin">rjoin (other, key_selector, other_key_selector, result_selector)</a></td>
+	<td class="summary">right join</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cross">cross (other)</a></td>
+	<td class="summary">cartesian product</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#group">group (key_selector)</a></td>
+	<td class="summary">group by key</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#effect">effect (action)</a></td>
+	<td class="summary">apply side effect</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#partition">partition (predicate)</a></td>
+	<td class="summary">partition into two tables</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#each">each (action)</a></td>
+	<td class="summary">iterate with action</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fold">fold (initial, func)</a></td>
+	<td class="summary">fold/reduce</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pipe">pipe (func)</a></td>
+	<td class="summary">pipe to function</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#totable">totable ()</a></td>
+	<td class="summary">materialize to table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_range_direct">_range_direct ()</a></td>
+	<td class="summary">direct range materialization</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_fused_path">_fused_path ()</a></td>
+	<td class="summary">hyper-optimized fused path for where/select/take/skip/memoize</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_materialize_complex">_materialize_complex ()</a></td>
+	<td class="summary">materialize complex operations</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#_streamable_path">_streamable_path ()</a></td>
+	<td class="summary">streamable operations path</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#iter">iter ()</a></td>
+	<td class="summary">create stateless iterator (avoid if possible, use totable instead)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tostring">tostring (separator)</a></td>
+	<td class="summary">convert to string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#toset">toset ()</a></td>
+	<td class="summary">convert to set (table with values as keys)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#subset">subset (other)</a></td>
+	<td class="summary">check if subset of other</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#superset">superset (other)</a></td>
+	<td class="summary">check if superset of other</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pivot">pivot (row_key, col_key, value_key, agg_func)</a></td>
+	<td class="summary">pivot table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#count">count ()</a></td>
+	<td class="summary">count elements</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sum">sum ()</a></td>
+	<td class="summary">sum numeric values</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#min">min ()</a></td>
+	<td class="summary">get minimum value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#max">max ()</a></td>
+	<td class="summary">get maximum value</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#avg">avg ()</a></td>
+	<td class="summary">calculate average</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#first">first ()</a></td>
+	<td class="summary">get first element</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#last">last ()</a></td>
+	<td class="summary">get last element</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#any">any (predicate)</a></td>
+	<td class="summary">check if any element matches predicate</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#all">all (predicate)</a></td>
+	<td class="summary">check if all elements match predicate</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#contains">contains (value)</a></td>
+	<td class="summary">check if contains value (handles nil properly)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "from"></a>
+    <strong>from (data)</strong>
+    </dt>
+    <dd>
+    create iterator from table/string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         table|string|luna source data
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "range"></a>
+    <strong>range (a, b, c)</strong>
+    </dt>
+    <dd>
+    create range iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         integer start (or stop if only arg)
+        </li>
+        <li><span class="parameter">b</span>
+         integer stop (optional)
+        </li>
+        <li><span class="parameter">c</span>
+         integer step (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna range iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rep"></a>
+    <strong>rep (value, count)</strong>
+    </dt>
+    <dd>
+    create repeat iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         any value to repeat
+        </li>
+        <li><span class="parameter">count</span>
+         integer repetition count (-1 for infinite)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna repeat iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "unfold"></a>
+    <strong>unfold (seed, func)</strong>
+    </dt>
+    <dd>
+    create unfold iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">seed</span>
+         any initial state
+        </li>
+        <li><span class="parameter">func</span>
+         function(state) -> value, next_state
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna unfold iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "where"></a>
+    <strong>where (predicate)</strong>
+    </dt>
+    <dd>
+    filter by predicate
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         function(value) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna filtered iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "select"></a>
+    <strong>select (transform)</strong>
+    </dt>
+    <dd>
+    transform values
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">transform</span>
+         function(value) -> new_value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna transformed iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "memoize"></a>
+    <strong>memoize (predicate)</strong>
+    </dt>
+    <dd>
+    transform values with memoized predicate
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         function(value) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna filtered iterator with memoization
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "parallel_map"></a>
+    <strong>parallel_map (transform, batch_size)</strong>
+    </dt>
+    <dd>
+    parallel map using coroutines
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">transform</span>
+         function(value) -> new_value
+        </li>
+        <li><span class="parameter">batch_size</span>
+         integer batch size for parallelization (default 10)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna parallel mapped iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "chunk"></a>
+    <strong>chunk (size)</strong>
+    </dt>
+    <dd>
+    chunk elements into batches
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         integer chunk size
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna chunked iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "take"></a>
+    <strong>take (n)</strong>
+    </dt>
+    <dd>
+    take first n elements
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">n</span>
+         integer element count
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna limited iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "skip"></a>
+    <strong>skip (n)</strong>
+    </dt>
+    <dd>
+    skip first n elements
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">n</span>
+         integer element count
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna skipped iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "reverse"></a>
+    <strong>reverse ()</strong>
+    </dt>
+    <dd>
+    reverse element order
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna reversed iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "order"></a>
+    <strong>order (comparator)</strong>
+    </dt>
+    <dd>
+    sort elements
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">comparator</span>
+         function(a,b) -> boolean (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna sorted iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "distinct"></a>
+    <strong>distinct (key_func)</strong>
+    </dt>
+    <dd>
+    filter distinct elements
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key_func</span>
+         function(value) -> key (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna distinct iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "flatten"></a>
+    <strong>flatten (depth)</strong>
+    </dt>
+    <dd>
+    flatten nested tables
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">depth</span>
+         integer flatten depth (default 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna flattened iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "window"></a>
+    <strong>window (size, step)</strong>
+    </dt>
+    <dd>
+    create sliding windows
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">size</span>
+         integer window size
+        </li>
+        <li><span class="parameter">step</span>
+         integer step size (default 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna window iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "scan"></a>
+    <strong>scan (initial, func)</strong>
+    </dt>
+    <dd>
+    accumulate with function
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">initial</span>
+         any initial accumulator value
+        </li>
+        <li><span class="parameter">func</span>
+         function(acc, value) -> new_acc
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna scan iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "zip"></a>
+    <strong>zip (other)</strong>
+    </dt>
+    <dd>
+    zip with another iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna zipped iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "unzip"></a>
+    <strong>unzip ()</strong>
+    </dt>
+    <dd>
+    unzip paired elements
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna unzipped iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "intersperse"></a>
+    <strong>intersperse (separator)</strong>
+    </dt>
+    <dd>
+    intersperse separator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">separator</span>
+         any value to insert between elements
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna interspersed iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "lag"></a>
+    <strong>lag (n, default)</strong>
+    </dt>
+    <dd>
+    lag elements
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">n</span>
+         integer lag count (default 1)
+        </li>
+        <li><span class="parameter">default</span>
+         any default value for missing elements
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna lagged iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "find"></a>
+    <strong>find (predicate)</strong>
+    </dt>
+    <dd>
+    find first matching element
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         function(value) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna find iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "between"></a>
+    <strong>between (start_val, end_val)</strong>
+    </dt>
+    <dd>
+    select elements between markers
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">start_val</span>
+         any start marker value
+        </li>
+        <li><span class="parameter">end_val</span>
+         any end marker value
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna between iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "union"></a>
+    <strong>union (other)</strong>
+    </dt>
+    <dd>
+    union with another iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna union iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "intersection"></a>
+    <strong>intersection (other)</strong>
+    </dt>
+    <dd>
+    intersection with another iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna intersection iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "complement"></a>
+    <strong>complement (other)</strong>
+    </dt>
+    <dd>
+    complement with another iterator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna complement iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "join"></a>
+    <strong>join (other, key_selector, other_key_selector, result_selector)</strong>
+    </dt>
+    <dd>
+    inner join
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+        <li><span class="parameter">key_selector</span>
+         function(value) -> key
+        </li>
+        <li><span class="parameter">other_key_selector</span>
+         function(value) -> key
+        </li>
+        <li><span class="parameter">result_selector</span>
+         function(left, right) -> result
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna joined iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ljoin"></a>
+    <strong>ljoin (other, key_selector, other_key_selector, result_selector)</strong>
+    </dt>
+    <dd>
+    left join
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+
+        </li>
+        <li><span class="parameter">key_selector</span>
+
+        </li>
+        <li><span class="parameter">other_key_selector</span>
+
+        </li>
+        <li><span class="parameter">result_selector</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "rjoin"></a>
+    <strong>rjoin (other, key_selector, other_key_selector, result_selector)</strong>
+    </dt>
+    <dd>
+    right join
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+
+        </li>
+        <li><span class="parameter">key_selector</span>
+
+        </li>
+        <li><span class="parameter">other_key_selector</span>
+
+        </li>
+        <li><span class="parameter">result_selector</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cross"></a>
+    <strong>cross (other)</strong>
+    </dt>
+    <dd>
+    cartesian product
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna cross product iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "group"></a>
+    <strong>group (key_selector)</strong>
+    </dt>
+    <dd>
+    group by key
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key_selector</span>
+         function(value) -> key
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna grouped iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "effect"></a>
+    <strong>effect (action)</strong>
+    </dt>
+    <dd>
+    apply side effect
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         function(value) action to perform
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        luna effect iterator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "partition"></a>
+    <strong>partition (predicate)</strong>
+    </dt>
+    <dd>
+    partition into two tables
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         function(value) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table, table (pass, fail)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "each"></a>
+    <strong>each (action)</strong>
+    </dt>
+    <dd>
+    iterate with action
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         function(value) action to perform
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fold"></a>
+    <strong>fold (initial, func)</strong>
+    </dt>
+    <dd>
+    fold/reduce
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">initial</span>
+         any initial accumulator
+        </li>
+        <li><span class="parameter">func</span>
+         function(acc, value) -> new_acc
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any final accumulator
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pipe"></a>
+    <strong>pipe (func)</strong>
+    </dt>
+    <dd>
+    pipe to function
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+         function(luna) -> result
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any function result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "totable"></a>
+    <strong>totable ()</strong>
+    </dt>
+    <dd>
+    materialize to table
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table materialized elements
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_range_direct"></a>
+    <strong>_range_direct ()</strong>
+    </dt>
+    <dd>
+    direct range materialization
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_fused_path"></a>
+    <strong>_fused_path ()</strong>
+    </dt>
+    <dd>
+    hyper-optimized fused path for where/select/take/skip/memoize
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_materialize_complex"></a>
+    <strong>_materialize_complex ()</strong>
+    </dt>
+    <dd>
+    materialize complex operations
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "_streamable_path"></a>
+    <strong>_streamable_path ()</strong>
+    </dt>
+    <dd>
+    streamable operations path
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "iter"></a>
+    <strong>iter ()</strong>
+    </dt>
+    <dd>
+    create stateless iterator (avoid if possible, use totable instead)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        function iterator function
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "tostring"></a>
+    <strong>tostring (separator)</strong>
+    </dt>
+    <dd>
+    convert to string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">separator</span>
+         string separator (default "")
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string concatenated result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "toset"></a>
+    <strong>toset ()</strong>
+    </dt>
+    <dd>
+    convert to set (table with values as keys)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table set table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "subset"></a>
+    <strong>subset (other)</strong>
+    </dt>
+    <dd>
+    check if subset of other
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if subset
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "superset"></a>
+    <strong>superset (other)</strong>
+    </dt>
+    <dd>
+    check if superset of other
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table|luna other iterator
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if superset
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pivot"></a>
+    <strong>pivot (row_key, col_key, value_key, agg_func)</strong>
+    </dt>
+    <dd>
+    pivot table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">row_key</span>
+         function(item) -> row_key
+        </li>
+        <li><span class="parameter">col_key</span>
+         function(item) -> col_key
+        </li>
+        <li><span class="parameter">value_key</span>
+         function(item) -> value
+        </li>
+        <li><span class="parameter">agg_func</span>
+         function(values) -> aggregated_value (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table pivoted table
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "count"></a>
+    <strong>count ()</strong>
+    </dt>
+    <dd>
+    count elements
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        integer count
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sum"></a>
+    <strong>sum ()</strong>
+    </dt>
+    <dd>
+    sum numeric values
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number sum
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "min"></a>
+    <strong>min ()</strong>
+    </dt>
+    <dd>
+    get minimum value
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any minimum value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "max"></a>
+    <strong>max ()</strong>
+    </dt>
+    <dd>
+    get maximum value
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any maximum value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "avg"></a>
+    <strong>avg ()</strong>
+    </dt>
+    <dd>
+    calculate average
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number average
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "first"></a>
+    <strong>first ()</strong>
+    </dt>
+    <dd>
+    get first element
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any first element or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "last"></a>
+    <strong>last ()</strong>
+    </dt>
+    <dd>
+    get last element
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        any last element or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "any"></a>
+    <strong>any (predicate)</strong>
+    </dt>
+    <dd>
+    check if any element matches predicate
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         function(value) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if any match
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "all"></a>
+    <strong>all (predicate)</strong>
+    </dt>
+    <dd>
+    check if all elements match predicate
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">predicate</span>
+         function(value) -> boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if all match
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "contains"></a>
+    <strong>contains (value)</strong>
+    </dt>
+    <dd>
+    check if contains value (handles nil properly)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         any value to find
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if contains
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

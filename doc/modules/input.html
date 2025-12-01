@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><strong>input</strong></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>input</code></h1>
+<p>check if action was just pressed this frame</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#down">down (action)</a></td>
+	<td class="summary">check if action is currently held down</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#released">released (action)</a></td>
+	<td class="summary">check if action was just released this frame</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#buffered">buffered (action, frames)</a></td>
+	<td class="summary">check if action was pressed within buffer window (great for game feel!)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#any_pressed">any_pressed (...)</a></td>
+	<td class="summary">check if any of the given actions are pressed</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#any_down">any_down (...)</a></td>
+	<td class="summary">check if any of the given actions are down</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#all_down">all_down (...)</a></td>
+	<td class="summary">check if all of the given actions are down (for combos)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#axis">axis ()</a></td>
+	<td class="summary">get directional axis values</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pointer">pointer ()</a></td>
+	<td class="summary">get pointer position (mouse/touch)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#device">device ()</a></td>
+	<td class="summary">get currently active device</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_deadzone">set_deadzone (zone, type)</a></td>
+	<td class="summary">set custom deadzone for analog inputs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_buffer_frames">set_buffer_frames (frames)</a></td>
+	<td class="summary">set input buffer window</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#bind">bind (action, config)</a></td>
+	<td class="summary">bind action to custom inputs</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_binding">add_binding (action, config)</a></td>
+	<td class="summary">add additional bindings to an action without replacing existing ones</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_binding">get_binding (action)</a></td>
+	<td class="summary">get current bindings for an action (useful for displaying controls)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#action">action (name)</a></td>
+	<td class="summary">get action code by name (for readability)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (dt)</a></td>
+	<td class="summary">update input state (call once per frame in love.update)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#refresh">refresh ()</a></td>
+	<td class="summary">hot-reload device list (call when controller connected/disconnected)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "down"></a>
+    <strong>down (action)</strong>
+    </dt>
+    <dd>
+    check if action is currently held down
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         integer action code
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if down
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "released"></a>
+    <strong>released (action)</strong>
+    </dt>
+    <dd>
+    check if action was just released this frame
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         integer action code
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if released
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "buffered"></a>
+    <strong>buffered (action, frames)</strong>
+    </dt>
+    <dd>
+    check if action was pressed within buffer window (great for game feel!)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         integer action code
+        </li>
+        <li><span class="parameter">frames</span>
+         integer (optional) buffer window in frames, default 6
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if buffered
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "any_pressed"></a>
+    <strong>any_pressed (...)</strong>
+    </dt>
+    <dd>
+    check if any of the given actions are pressed
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         integer action codes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if any pressed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "any_down"></a>
+    <strong>any_down (...)</strong>
+    </dt>
+    <dd>
+    check if any of the given actions are down
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         integer action codes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if any down
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "all_down"></a>
+    <strong>all_down (...)</strong>
+    </dt>
+    <dd>
+    check if all of the given actions are down (for combos)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+         integer action codes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if all down
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "axis"></a>
+    <strong>axis ()</strong>
+    </dt>
+    <dd>
+    get directional axis values
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number x axis (-1 to 1)</li>
+        <li>
+        number y axis (-1 to 1)</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pointer"></a>
+    <strong>pointer ()</strong>
+    </dt>
+    <dd>
+    get pointer position (mouse/touch)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number x position</li>
+        <li>
+        number y position</li>
+        <li>
+        boolean is pressed</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "device"></a>
+    <strong>device ()</strong>
+    </dt>
+    <dd>
+    get currently active device
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table device info or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_deadzone"></a>
+    <strong>set_deadzone (zone, type)</strong>
+    </dt>
+    <dd>
+    set custom deadzone for analog inputs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">zone</span>
+         number deadzone value (0 to 1)
+        </li>
+        <li><span class="parameter">type</span>
+         string (optional) "radial" or "axial", default "radial"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_buffer_frames"></a>
+    <strong>set_buffer_frames (frames)</strong>
+    </dt>
+    <dd>
+    set input buffer window
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frames</span>
+         integer buffer window in frames
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "bind"></a>
+    <strong>bind (action, config)</strong>
+    </dt>
+    <dd>
+    bind action to custom inputs
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         integer action code
+        </li>
+        <li><span class="parameter">config</span>
+         table binding configuration
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_binding"></a>
+    <strong>add_binding (action, config)</strong>
+    </dt>
+    <dd>
+    add additional bindings to an action without replacing existing ones
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         integer action code
+        </li>
+        <li><span class="parameter">config</span>
+         table binding configuration (same format as bind)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_binding"></a>
+    <strong>get_binding (action)</strong>
+    </dt>
+    <dd>
+    get current bindings for an action (useful for displaying controls)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+         integer action code
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table binding configuration
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "action"></a>
+    <strong>action (name)</strong>
+    </dt>
+    <dd>
+    get action code by name (for readability)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string action name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        integer action code
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (dt)</strong>
+    </dt>
+    <dd>
+    update input state (call once per frame in love.update)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+         number delta time
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "refresh"></a>
+    <strong>refresh ()</strong>
+    </dt>
+    <dd>
+    hot-reload device list (call when controller connected/disconnected)
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><strong>markov</strong></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>markov</code></h1>
+<p>markov chain library for luajit/lua 5.3+
+ supports first-order and higher-order chains, text generation, state prediction
+ ideal for weather systems, procedural generation, ai behavior, text synthesis
+ optimized with ieee 754 hex floats, local caching, minimal allocations</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (order, case_sensitive)</a></td>
+	<td class="summary">create a new markov chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:normalize">Chain:normalize (token)</a></td>
+	<td class="summary">normalize a token (case handling)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:add_sequence">Chain:add_sequence (sequence)</a></td>
+	<td class="summary">add a sequence of observations to the chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:add_transition">Chain:add_transition (from_state, to_state, count)</a></td>
+	<td class="summary">add multiple observations of a single transition</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:get_probabilities">Chain:get_probabilities (state)</a></td>
+	<td class="summary">get normalized transition probabilities for a state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:predict">Chain:predict (state, deterministic)</a></td>
+	<td class="summary">predict the next state given current state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:generate">Chain:generate (max_length, start_state, temperature)</a></td>
+	<td class="summary">generate a sequence from the chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:walk">Chain:walk (start_state, steps)</a></td>
+	<td class="summary">walk the chain for n steps</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:stationary_distribution">Chain:stationary_distribution (max_iterations, tolerance)</a></td>
+	<td class="summary">get the stationary distribution (steady-state probabilities)
+ iterative power method (for small chains only)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:merge">Chain:merge (other, weight)</a></td>
+	<td class="summary">merge another chain into this one</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:serialize">Chain:serialize ()</a></td>
+	<td class="summary">serialize chain to table (for json/msgpack)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#deserialize">deserialize (data)</a></td>
+	<td class="summary">deserialize chain from table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:to_json">Chain:to_json ()</a></td>
+	<td class="summary">save chain to json string (requires json library)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#from_json">from_json (json_str)</a></td>
+	<td class="summary">load chain from json string (requires json library)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:stats">Chain:stats ()</a></td>
+	<td class="summary">get statistics about the chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Chain:clear">Chain:clear ()</a></td>
+	<td class="summary">clear all data from the chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#from_text">from_text (text, order, word_based)</a></td>
+	<td class="summary">create a chain from text corpus</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#generate_text">generate_text (chain, max_words, temperature)</a></td>
+	<td class="summary">generate text from a chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#discrete">discrete (states)</a></td>
+	<td class="summary">create a simple discrete state chain</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#train_discrete">train_discrete (sequence, order)</a></td>
+	<td class="summary">train a chain on a sequence of discrete states</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (order, case_sensitive)</strong>
+    </dt>
+    <dd>
+    create a new markov chain
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">order</span>
+         number order of the chain (default 1)
+        </li>
+        <li><span class="parameter">case_sensitive</span>
+         boolean preserve case in tokens (default true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table chain instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:normalize"></a>
+    <strong>Chain:normalize (token)</strong>
+    </dt>
+    <dd>
+    normalize a token (case handling)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">token</span>
+         string token to normalize
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string normalized token
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:add_sequence"></a>
+    <strong>Chain:add_sequence (sequence)</strong>
+    </dt>
+    <dd>
+    add a sequence of observations to the chain
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sequence</span>
+         table array of tokens
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:add_transition"></a>
+    <strong>Chain:add_transition (from_state, to_state, count)</strong>
+    </dt>
+    <dd>
+    add multiple observations of a single transition
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">from_state</span>
+         string or table current state
+        </li>
+        <li><span class="parameter">to_state</span>
+         string next state
+        </li>
+        <li><span class="parameter">count</span>
+         number number of observations (default 1)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:get_probabilities"></a>
+    <strong>Chain:get_probabilities (state)</strong>
+    </dt>
+    <dd>
+    get normalized transition probabilities for a state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+         string or table current state
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table {next_state -> probability} map, or nil if state unknown
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:predict"></a>
+    <strong>Chain:predict (state, deterministic)</strong>
+    </dt>
+    <dd>
+    predict the next state given current state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+         string or table current state
+        </li>
+        <li><span class="parameter">deterministic</span>
+         boolean if true, return most likely state (default false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string next state, or nil if no transitions exist
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:generate"></a>
+    <strong>Chain:generate (max_length, start_state, temperature)</strong>
+    </dt>
+    <dd>
+    generate a sequence from the chain
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">max_length</span>
+         number maximum sequence length (default 100)
+        </li>
+        <li><span class="parameter">start_state</span>
+         string or table initial state (default: random start)
+        </li>
+        <li><span class="parameter">temperature</span>
+         number randomness factor (default 1.0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of generated tokens
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:walk"></a>
+    <strong>Chain:walk (start_state, steps)</strong>
+    </dt>
+    <dd>
+    walk the chain for n steps
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">start_state</span>
+         string or table initial state
+        </li>
+        <li><span class="parameter">steps</span>
+         number number of steps to take
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of visited states
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:stationary_distribution"></a>
+    <strong>Chain:stationary_distribution (max_iterations, tolerance)</strong>
+    </dt>
+    <dd>
+    get the stationary distribution (steady-state probabilities)
+ iterative power method (for small chains only)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">max_iterations</span>
+         number maximum iterations (default 1000)
+        </li>
+        <li><span class="parameter">tolerance</span>
+         number convergence tolerance (default 0.0001)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table {state -> probability} map
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:merge"></a>
+    <strong>Chain:merge (other, weight)</strong>
+    </dt>
+    <dd>
+    merge another chain into this one
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+         table another chain instance
+        </li>
+        <li><span class="parameter">weight</span>
+         number weight for other chain (default 1.0)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:serialize"></a>
+    <strong>Chain:serialize ()</strong>
+    </dt>
+    <dd>
+    serialize chain to table (for json/msgpack)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table serializable representation
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "deserialize"></a>
+    <strong>deserialize (data)</strong>
+    </dt>
+    <dd>
+    deserialize chain from table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+         table serialized representation
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table chain instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:to_json"></a>
+    <strong>Chain:to_json ()</strong>
+    </dt>
+    <dd>
+    save chain to json string (requires json library)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string json representation
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "from_json"></a>
+    <strong>from_json (json_str)</strong>
+    </dt>
+    <dd>
+    load chain from json string (requires json library)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">json_str</span>
+         string json representation
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table chain instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:stats"></a>
+    <strong>Chain:stats ()</strong>
+    </dt>
+    <dd>
+    get statistics about the chain
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table {states, transitions, total_observations}
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Chain:clear"></a>
+    <strong>Chain:clear ()</strong>
+    </dt>
+    <dd>
+    clear all data from the chain
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "from_text"></a>
+    <strong>from_text (text, order, word_based)</strong>
+    </dt>
+    <dd>
+    create a chain from text corpus
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+         string input text
+        </li>
+        <li><span class="parameter">order</span>
+         number chain order (default 2)
+        </li>
+        <li><span class="parameter">word_based</span>
+         boolean use words instead of characters (default true)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table chain instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "generate_text"></a>
+    <strong>generate_text (chain, max_words, temperature)</strong>
+    </dt>
+    <dd>
+    generate text from a chain
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">chain</span>
+         table chain instance
+        </li>
+        <li><span class="parameter">max_words</span>
+         number maximum words/characters (default 100)
+        </li>
+        <li><span class="parameter">temperature</span>
+         number randomness (default 1.0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string generated text
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "discrete"></a>
+    <strong>discrete (states)</strong>
+    </dt>
+    <dd>
+    create a simple discrete state chain
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">states</span>
+         table array of state names
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table chain instance
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "train_discrete"></a>
+    <strong>train_discrete (sequence, order)</strong>
+    </dt>
+    <dd>
+    train a chain on a sequence of discrete states
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sequence</span>
+         table array of states
+        </li>
+        <li><span class="parameter">order</span>
+         number chain order (default 1)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table trained chain
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

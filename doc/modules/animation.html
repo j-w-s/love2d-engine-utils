@@ -1,0 +1,2017 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><strong>animation</strong></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>animation</code></h1>
+<p>register a spritesheet for use in animations
+ automatically generates quads for the entire sheet</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#get_spritesheet">get_spritesheet (id)</a></td>
+	<td class="summary">get a spritesheet by id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_quad">get_quad (sheet_id, index)</a></td>
+	<td class="summary">get a specific quad from a spritesheet by index</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_quad_at">get_quad_at (sheet_id, col, row)</a></td>
+	<td class="summary">get quad from spritesheet by row and column</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sequence">sequence (id, sheet_id, frames, duration, options)</a></td>
+	<td class="summary">define an animation sequence</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sequence_range">sequence_range (id, sheet_id, start_frame, end_frame, duration, options)</a></td>
+	<td class="summary">create a sequence from a frame range</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#sequence_grid">sequence_grid (id, sheet_id, row, start_col, end_col, duration, options)</a></td>
+	<td class="summary">create a sequence from row/column grid coordinates</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_sequence">get_sequence (id)</a></td>
+	<td class="summary">get a sequence by id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#directional">directional (id, sheet_id, directions, duration, options)</a></td>
+	<td class="summary">create a directional animation set (4-way or 8-way)
+ automatically creates sequences for each direction</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#auto_directional">auto_directional (id, sheet_id, frames_per_dir, duration, options)</a></td>
+	<td class="summary">create auto-directional (4-way: up/down/left/right)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_directional_sequence">get_directional_sequence (set_id, direction)</a></td>
+	<td class="summary">get sequence id for a specific direction</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#state_machine">state_machine (id, states, initial_state)</a></td>
+	<td class="summary">create an animation state machine</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_with_state_machine">create_with_state_machine (state_machine_id, options)</a></td>
+	<td class="summary">create animation instance with state machine</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#transition">transition (id, new_state, force)</a></td>
+	<td class="summary">transition animation to a new state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create">create (sequence_id, options)</a></td>
+	<td class="summary">create an animation instance
+ returns an id that you store with your entity data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#destroy">destroy (id)</a></td>
+	<td class="summary">destroy an animation instance</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (id)</a></td>
+	<td class="summary">get an animation instance</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play">play (id, sequence_id, reset)</a></td>
+	<td class="summary">change an animation's sequence</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pause">pause (id)</a></td>
+	<td class="summary">pause an animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resume">resume (id)</a></td>
+	<td class="summary">resume an animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#reset">reset (id)</a></td>
+	<td class="summary">reset an animation to first frame</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_speed">set_speed (id, speed)</a></td>
+	<td class="summary">set animation playback speed</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_flip">set_flip (id, flip_x, flip_y)</a></td>
+	<td class="summary">set animation flip flags</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_reverse">set_reverse (id, reverse)</a></td>
+	<td class="summary">set playback direction</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_direction">set_direction (id, set_id, direction)</a></td>
+	<td class="summary">set direction for directional animation set</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#on_frame">on_frame (id, frame_num, callback)</a></td>
+	<td class="summary">register a callback for a specific frame</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_frame_events">clear_frame_events (id)</a></td>
+	<td class="summary">clear all frame events for an instance</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_frame_tag">add_frame_tag (seq_id, frame_num, tag_name)</a></td>
+	<td class="summary">add a named tag to a sequence frame</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#on_tag">on_tag (seq_id, tag_name, callback)</a></td>
+	<td class="summary">register callback for a frame tag</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#has_tag">has_tag (id, tag_name)</a></td>
+	<td class="summary">check if current frame has a specific tag</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (dt)</a></td>
+	<td class="summary">update all animation instances
+ call this in love.update(dt) - updates timing for all active animations</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_renderer">set_renderer (renderer)</a></td>
+	<td class="summary">set the renderer module reference (optional convenience)
+ alternatively, pass renderer directly to draw_batched()</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_frame">get_frame (id)</a></td>
+	<td class="summary">get the current frame's quad and image for an animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw">draw (id, x, y, options)</a></td>
+	<td class="summary">draw an animation (standalone, without renderer)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_batched">draw_batched (id, layer, x, y, options)</a></td>
+	<td class="summary">draw an animation using renderer.lua's batched system (convenience wrapper)
+ NOTE: requires renderer_module to be set via animation.set_renderer()</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#draw_debug">draw_debug (id, x, y)</a></td>
+	<td class="summary">draw animation debug info</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_playing">is_playing (id)</a></td>
+	<td class="summary">check if an animation is playing</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_finished">is_finished (id)</a></td>
+	<td class="summary">check if an animation has finished (for non-looping animations)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_current_frame">get_current_frame (id)</a></td>
+	<td class="summary">get current frame number (1-based)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_frame_count">get_frame_count (id)</a></td>
+	<td class="summary">get total frame count for current sequence</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_state">get_state (id)</a></td>
+	<td class="summary">get current state name (for state machine animations)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_direction">get_direction (id)</a></td>
+	<td class="summary">get current direction (for directional animations)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_flip">get_flip (id)</a></td>
+	<td class="summary">check if animation is flipped</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#count">count ()</a></td>
+	<td class="summary">get number of active animation instances</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#count_playing">count_playing ()</a></td>
+	<td class="summary">get number of currently playing instances</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_progress">get_progress (id)</a></td>
+	<td class="summary">get animation progress as percentage (0.0 to 1.0)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_sequence_id">get_sequence_id (id)</a></td>
+	<td class="summary">get current sequence id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_speed">get_speed (id)</a></td>
+	<td class="summary">get animation speed</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_reversed">is_reversed (id)</a></td>
+	<td class="summary">check if animation is reversed</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#batch_sequences">batch_sequences (base_id, sheet_id, rows, duration, options)</a></td>
+	<td class="summary">create multiple sequences from a grid layout at once</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clone_sequence">clone_sequence (new_id, source_id, override_options)</a></td>
+	<td class="summary">clone an existing sequence with a new id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_batch">create_batch (sequence_id, count, options)</a></td>
+	<td class="summary">create multiple animation instances at once</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#destroy_batch">destroy_batch (ids)</a></td>
+	<td class="summary">destroy multiple animation instances at once</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#warmup">warmup (count)</a></td>
+	<td class="summary">warmup instance pool</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear">clear ()</a></td>
+	<td class="summary">clear all registered spritesheets, sequences, and instances</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_instances">clear_instances ()</a></td>
+	<td class="summary">clear all instances but keep definitions</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_stats">get_stats ()</a></td>
+	<td class="summary">get statistics</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#print_stats">print_stats ()</a></td>
+	<td class="summary">print statistics to console</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#builder">builder (sequence_id)</a></td>
+	<td class="summary">create a builder-style animation creator</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_composite">create_composite (instance_ids)</a></td>
+	<td class="summary">create a composite animation from multiple instances
+ all instances will be controlled together</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#destroy_composite">destroy_composite (composite_id, destroy_instances)</a></td>
+	<td class="summary">destroy a composite animation</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play_composite">play_composite (composite_id, sequence_id, reset)</a></td>
+	<td class="summary">play all animations in a composite</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pause_composite">pause_composite (composite_id)</a></td>
+	<td class="summary">pause all animations in a composite</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resume_composite">resume_composite (composite_id)</a></td>
+	<td class="summary">resume all animations in a composite</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_composite_speed">set_composite_speed (composite_id, speed)</a></td>
+	<td class="summary">set speed for all animations in a composite</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_composite_instances">get_composite_instances (composite_id)</a></td>
+	<td class="summary">get composite instance ids</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "get_spritesheet"></a>
+    <strong>get_spritesheet (id)</strong>
+    </dt>
+    <dd>
+    get a spritesheet by id
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string spritesheet id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table spritesheet or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_quad"></a>
+    <strong>get_quad (sheet_id, index)</strong>
+    </dt>
+    <dd>
+    get a specific quad from a spritesheet by index
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">index</span>
+         number quad index (1-based)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        love.Quad quad or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_quad_at"></a>
+    <strong>get_quad_at (sheet_id, col, row)</strong>
+    </dt>
+    <dd>
+    get quad from spritesheet by row and column
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">col</span>
+         number column (0-based)
+        </li>
+        <li><span class="parameter">row</span>
+         number row (0-based)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        love.Quad quad or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sequence"></a>
+    <strong>sequence (id, sheet_id, frames, duration, options)</strong>
+    </dt>
+    <dd>
+    define an animation sequence
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string unique sequence id (e.g., "player_walk", "enemy_attack")
+        </li>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id this sequence uses
+        </li>
+        <li><span class="parameter">frames</span>
+         table array of frame indices (1-based)
+        </li>
+        <li><span class="parameter">duration</span>
+         number or table duration of each frame in seconds (or array of per-frame durations)
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) { loop=true, on_complete=nil, pingpong=false }
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table sequence definition
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sequence_range"></a>
+    <strong>sequence_range (id, sheet_id, start_frame, end_frame, duration, options)</strong>
+    </dt>
+    <dd>
+    create a sequence from a frame range
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string sequence id
+        </li>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">start_frame</span>
+         number first frame (1-based)
+        </li>
+        <li><span class="parameter">end_frame</span>
+         number last frame (1-based)
+        </li>
+        <li><span class="parameter">duration</span>
+         number or table duration per frame
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as sequence()
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table sequence definition
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "sequence_grid"></a>
+    <strong>sequence_grid (id, sheet_id, row, start_col, end_col, duration, options)</strong>
+    </dt>
+    <dd>
+    create a sequence from row/column grid coordinates
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string sequence id
+        </li>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">row</span>
+         number row index (0-based)
+        </li>
+        <li><span class="parameter">start_col</span>
+         number starting column (0-based)
+        </li>
+        <li><span class="parameter">end_col</span>
+         number ending column (0-based)
+        </li>
+        <li><span class="parameter">duration</span>
+         number or table duration per frame
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as sequence()
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table sequence definition
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_sequence"></a>
+    <strong>get_sequence (id)</strong>
+    </dt>
+    <dd>
+    get a sequence by id
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string sequence id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table sequence or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "directional"></a>
+    <strong>directional (id, sheet_id, directions, duration, options)</strong>
+    </dt>
+    <dd>
+    create a directional animation set (4-way or 8-way)
+ automatically creates sequences for each direction
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string base id for the set
+        </li>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">directions</span>
+         table map of direction -> {row=N, start_col=N, end_col=N}
+        </li>
+        <li><span class="parameter">duration</span>
+         number or table duration per frame
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as sequence()
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table directional set
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "auto_directional"></a>
+    <strong>auto_directional (id, sheet_id, frames_per_dir, duration, options)</strong>
+    </dt>
+    <dd>
+    create auto-directional (4-way: up/down/left/right)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string base id
+        </li>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">frames_per_dir</span>
+         number frames per direction
+        </li>
+        <li><span class="parameter">duration</span>
+         number or table duration per frame
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as sequence()
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table directional set
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_directional_sequence"></a>
+    <strong>get_directional_sequence (set_id, direction)</strong>
+    </dt>
+    <dd>
+    get sequence id for a specific direction
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">set_id</span>
+         string directional set id
+        </li>
+        <li><span class="parameter">direction</span>
+         string direction name (e.g., "up", "down", "left", "right")
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string sequence id or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "state_machine"></a>
+    <strong>state_machine (id, states, initial_state)</strong>
+    </dt>
+    <dd>
+    create an animation state machine
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string state machine id
+        </li>
+        <li><span class="parameter">states</span>
+         table map of state_name -> {sequence=seq_id, priority=N, transitions={}}
+        </li>
+        <li><span class="parameter">initial_state</span>
+         string initial state name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table state machine
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_with_state_machine"></a>
+    <strong>create_with_state_machine (state_machine_id, options)</strong>
+    </dt>
+    <dd>
+    create animation instance with state machine
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state_machine_id</span>
+         string state machine id
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as create()
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number animation instance id
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "transition"></a>
+    <strong>transition (id, new_state, force)</strong>
+    </dt>
+    <dd>
+    transition animation to a new state
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">new_state</span>
+         string new state name
+        </li>
+        <li><span class="parameter">force</span>
+         boolean (optional) force transition even if lower priority
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create"></a>
+    <strong>create (sequence_id, options)</strong>
+    </dt>
+    <dd>
+    create an animation instance
+ returns an id that you store with your entity data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sequence_id</span>
+         string initial animation sequence
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) { playing=true, speed=1.0, on_complete=nil, flip_x=false, flip_y=false, random_start=false, reverse=false }
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number animation instance id
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "destroy"></a>
+    <strong>destroy (id)</strong>
+    </dt>
+    <dd>
+    destroy an animation instance
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (id)</strong>
+    </dt>
+    <dd>
+    get an animation instance
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table animation data or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "play"></a>
+    <strong>play (id, sequence_id, reset)</strong>
+    </dt>
+    <dd>
+    change an animation's sequence
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">sequence_id</span>
+         string new sequence id
+        </li>
+        <li><span class="parameter">reset</span>
+         boolean (optional) reset to frame 1 (default true)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pause"></a>
+    <strong>pause (id)</strong>
+    </dt>
+    <dd>
+    pause an animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "resume"></a>
+    <strong>resume (id)</strong>
+    </dt>
+    <dd>
+    resume an animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "reset"></a>
+    <strong>reset (id)</strong>
+    </dt>
+    <dd>
+    reset an animation to first frame
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_speed"></a>
+    <strong>set_speed (id, speed)</strong>
+    </dt>
+    <dd>
+    set animation playback speed
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">speed</span>
+         number speed multiplier (1.0 = normal, 2.0 = double speed, etc)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_flip"></a>
+    <strong>set_flip (id, flip_x, flip_y)</strong>
+    </dt>
+    <dd>
+    set animation flip flags
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">flip_x</span>
+         boolean flip horizontally
+        </li>
+        <li><span class="parameter">flip_y</span>
+         boolean flip vertically
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_reverse"></a>
+    <strong>set_reverse (id, reverse)</strong>
+    </dt>
+    <dd>
+    set playback direction
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">reverse</span>
+         boolean true for reverse playback
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_direction"></a>
+    <strong>set_direction (id, set_id, direction)</strong>
+    </dt>
+    <dd>
+    set direction for directional animation set
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">set_id</span>
+         string directional set id
+        </li>
+        <li><span class="parameter">direction</span>
+         string direction name
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "on_frame"></a>
+    <strong>on_frame (id, frame_num, callback)</strong>
+    </dt>
+    <dd>
+    register a callback for a specific frame
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">frame_num</span>
+         number frame number (1-based)
+        </li>
+        <li><span class="parameter">callback</span>
+         function callback(anim_id, frame_num)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_frame_events"></a>
+    <strong>clear_frame_events (id)</strong>
+    </dt>
+    <dd>
+    clear all frame events for an instance
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_frame_tag"></a>
+    <strong>add_frame_tag (seq_id, frame_num, tag_name)</strong>
+    </dt>
+    <dd>
+    add a named tag to a sequence frame
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">seq_id</span>
+         string sequence id
+        </li>
+        <li><span class="parameter">frame_num</span>
+         number frame number (1-based)
+        </li>
+        <li><span class="parameter">tag_name</span>
+         string tag name (e.g., "hit", "footstep", "spawn_particle")
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "on_tag"></a>
+    <strong>on_tag (seq_id, tag_name, callback)</strong>
+    </dt>
+    <dd>
+    register callback for a frame tag
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">seq_id</span>
+         string sequence id
+        </li>
+        <li><span class="parameter">tag_name</span>
+         string tag name
+        </li>
+        <li><span class="parameter">callback</span>
+         function callback(anim_id, tag_name, frame_num)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "has_tag"></a>
+    <strong>has_tag (id, tag_name)</strong>
+    </dt>
+    <dd>
+    check if current frame has a specific tag
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">tag_name</span>
+         string tag name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if tag exists on current frame
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (dt)</strong>
+    </dt>
+    <dd>
+    update all animation instances
+ call this in love.update(dt) - updates timing for all active animations
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+         number delta time
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_renderer"></a>
+    <strong>set_renderer (renderer)</strong>
+    </dt>
+    <dd>
+    set the renderer module reference (optional convenience)
+ alternatively, pass renderer directly to draw_batched()
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">renderer</span>
+         table renderer module
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_frame"></a>
+    <strong>get_frame (id)</strong>
+    </dt>
+    <dd>
+    get the current frame's quad and image for an animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        love.Image image</li>
+        <li>
+        love.Quad quad</li>
+        <li>
+        number frame_width</li>
+        <li>
+        number frame_height</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw"></a>
+    <strong>draw (id, x, y, options)</strong>
+    </dt>
+    <dd>
+    draw an animation (standalone, without renderer)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) { r=0, sx=1, sy=1, ox=0, oy=0, color={1,1,1,1} }
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_batched"></a>
+    <strong>draw_batched (id, layer, x, y, options)</strong>
+    </dt>
+    <dd>
+    draw an animation using renderer.lua's batched system (convenience wrapper)
+ NOTE: requires renderer_module to be set via animation.set_renderer()
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">layer</span>
+         number render layer
+        </li>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) { r=0, sx=1, sy=1, ox=0, oy=0, color={1,1,1,1}, z=0 }
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "draw_debug"></a>
+    <strong>draw_debug (id, x, y)</strong>
+    </dt>
+    <dd>
+    draw animation debug info
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+        <li><span class="parameter">x</span>
+         number screen x position
+        </li>
+        <li><span class="parameter">y</span>
+         number screen y position
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_playing"></a>
+    <strong>is_playing (id)</strong>
+    </dt>
+    <dd>
+    check if an animation is playing
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if playing
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_finished"></a>
+    <strong>is_finished (id)</strong>
+    </dt>
+    <dd>
+    check if an animation has finished (for non-looping animations)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if finished
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_current_frame"></a>
+    <strong>get_current_frame (id)</strong>
+    </dt>
+    <dd>
+    get current frame number (1-based)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number current frame
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_frame_count"></a>
+    <strong>get_frame_count (id)</strong>
+    </dt>
+    <dd>
+    get total frame count for current sequence
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number frame count
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_state"></a>
+    <strong>get_state (id)</strong>
+    </dt>
+    <dd>
+    get current state name (for state machine animations)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string state name or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_direction"></a>
+    <strong>get_direction (id)</strong>
+    </dt>
+    <dd>
+    get current direction (for directional animations)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string direction name or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_flip"></a>
+    <strong>get_flip (id)</strong>
+    </dt>
+    <dd>
+    check if animation is flipped
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        boolean flip_x</li>
+        <li>
+        boolean flip_y</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "count"></a>
+    <strong>count ()</strong>
+    </dt>
+    <dd>
+    get number of active animation instances
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number count
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "count_playing"></a>
+    <strong>count_playing ()</strong>
+    </dt>
+    <dd>
+    get number of currently playing instances
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number count
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_progress"></a>
+    <strong>get_progress (id)</strong>
+    </dt>
+    <dd>
+    get animation progress as percentage (0.0 to 1.0)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number progress
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_sequence_id"></a>
+    <strong>get_sequence_id (id)</strong>
+    </dt>
+    <dd>
+    get current sequence id
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string sequence id or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_speed"></a>
+    <strong>get_speed (id)</strong>
+    </dt>
+    <dd>
+    get animation speed
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number speed multiplier
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_reversed"></a>
+    <strong>is_reversed (id)</strong>
+    </dt>
+    <dd>
+    check if animation is reversed
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         number animation instance id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if reversed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "batch_sequences"></a>
+    <strong>batch_sequences (base_id, sheet_id, rows, duration, options)</strong>
+    </dt>
+    <dd>
+    create multiple sequences from a grid layout at once
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">base_id</span>
+         string base id for sequences
+        </li>
+        <li><span class="parameter">sheet_id</span>
+         string spritesheet id
+        </li>
+        <li><span class="parameter">rows</span>
+         table array of {id_suffix, row, start_col, end_col}
+        </li>
+        <li><span class="parameter">duration</span>
+         number or table duration per frame
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as sequence()
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clone_sequence"></a>
+    <strong>clone_sequence (new_id, source_id, override_options)</strong>
+    </dt>
+    <dd>
+    clone an existing sequence with a new id
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">new_id</span>
+         string new sequence id
+        </li>
+        <li><span class="parameter">source_id</span>
+         string source sequence id
+        </li>
+        <li><span class="parameter">override_options</span>
+         table (optional) override options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table new sequence definition
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_batch"></a>
+    <strong>create_batch (sequence_id, count, options)</strong>
+    </dt>
+    <dd>
+    create multiple animation instances at once
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sequence_id</span>
+         string sequence id
+        </li>
+        <li><span class="parameter">count</span>
+         number number of instances to create
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) same as create()
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of animation instance ids
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "destroy_batch"></a>
+    <strong>destroy_batch (ids)</strong>
+    </dt>
+    <dd>
+    destroy multiple animation instances at once
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ids</span>
+         table array of animation instance ids
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "warmup"></a>
+    <strong>warmup (count)</strong>
+    </dt>
+    <dd>
+    warmup instance pool
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">count</span>
+         number number of instances to pre-allocate
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear"></a>
+    <strong>clear ()</strong>
+    </dt>
+    <dd>
+    clear all registered spritesheets, sequences, and instances
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_instances"></a>
+    <strong>clear_instances ()</strong>
+    </dt>
+    <dd>
+    clear all instances but keep definitions
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_stats"></a>
+    <strong>get_stats ()</strong>
+    </dt>
+    <dd>
+    get statistics
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table stats {total_instances, playing_instances, sequences, spritesheets}
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "print_stats"></a>
+    <strong>print_stats ()</strong>
+    </dt>
+    <dd>
+    print statistics to console
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "builder"></a>
+    <strong>builder (sequence_id)</strong>
+    </dt>
+    <dd>
+    create a builder-style animation creator
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sequence_id</span>
+         string sequence id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table builder object with fluent interface
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_composite"></a>
+    <strong>create_composite (instance_ids)</strong>
+    </dt>
+    <dd>
+    create a composite animation from multiple instances
+ all instances will be controlled together
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">instance_ids</span>
+         table array of animation instance ids
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number composite id
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "destroy_composite"></a>
+    <strong>destroy_composite (composite_id, destroy_instances)</strong>
+    </dt>
+    <dd>
+    destroy a composite animation
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">composite_id</span>
+         number composite id
+        </li>
+        <li><span class="parameter">destroy_instances</span>
+         boolean also destroy the individual instances
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "play_composite"></a>
+    <strong>play_composite (composite_id, sequence_id, reset)</strong>
+    </dt>
+    <dd>
+    play all animations in a composite
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">composite_id</span>
+         number composite id
+        </li>
+        <li><span class="parameter">sequence_id</span>
+         string sequence id (or table of sequence_ids per instance)
+        </li>
+        <li><span class="parameter">reset</span>
+         boolean reset to frame 1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pause_composite"></a>
+    <strong>pause_composite (composite_id)</strong>
+    </dt>
+    <dd>
+    pause all animations in a composite
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">composite_id</span>
+         number composite id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "resume_composite"></a>
+    <strong>resume_composite (composite_id)</strong>
+    </dt>
+    <dd>
+    resume all animations in a composite
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">composite_id</span>
+         number composite id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_composite_speed"></a>
+    <strong>set_composite_speed (composite_id, speed)</strong>
+    </dt>
+    <dd>
+    set speed for all animations in a composite
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">composite_id</span>
+         number composite id
+        </li>
+        <li><span class="parameter">speed</span>
+         number speed multiplier
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_composite_instances"></a>
+    <strong>get_composite_instances (composite_id)</strong>
+    </dt>
+    <dd>
+    get composite instance ids
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">composite_id</span>
+         number composite id
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of instance ids or nil
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

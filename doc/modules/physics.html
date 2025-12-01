@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><a href="../modules/audio.html">audio</a></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><strong>physics</strong></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>physics</code></h1>
+<p>private: clear a table without re-allocating</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#init">init (cell_size)</a></td>
+	<td class="summary">initialize or re-initialize the physics world</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear">clear ()</a></td>
+	<td class="summary">clear all colliders and reset the grid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (id, x, y, w, h, type, active, mask, on_collide)</a></td>
+	<td class="summary">add or update an aabb collider in the world</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_circle">add_circle (id, x, y, radius, type, active, mask, on_collide)</a></td>
+	<td class="summary">add or update a circle collider in the world</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_polygon">add_polygon (id, x, y, vertices, type, active, mask, on_collide)</a></td>
+	<td class="summary">add or update a polygon collider in the world
+ vertices are specified in world space</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add_layered">add_layered (id, x, y, w, h, type, layer, active, on_collide)</a></td>
+	<td class="summary">add or update a collider (just layer, no mask)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#remove">remove (id)</a></td>
+	<td class="summary">remove a collider from the world</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (id, x, y)</a></td>
+	<td class="summary">update a collider's position and re-insert into grid
+ use this for non-physics-driven movement.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update_polygon">update_polygon (id, vertices)</a></td>
+	<td class="summary">update polygon vertices (use after rotating/scaling a polygon)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#check">check (id, x, y, type_filter, mask_filter)</a></td>
+	<td class="summary">check for overlap at a potential position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cache_neighbors">cache_neighbors (id)</a></td>
+	<td class="summary">cache neighbors for a collider</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_cache">clear_cache (id)</a></td>
+	<td class="summary">clear cached neighbors for a collider</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#move">move (id, dx, dy, use_swept, stop_on_first)</a></td>
+	<td class="summary">move a collider with collision resolution</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#raycast">raycast (x1, y1, x2, y2, type_filter, mask_filter, callback)</a></td>
+	<td class="summary">raycast through the world</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get">get (id)</a></td>
+	<td class="summary">get a collider by id</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#exists">exists (id)</a></td>
+	<td class="summary">check if a collider exists</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#query_region">query_region (x, y, w, h, type_filter, mask_filter)</a></td>
+	<td class="summary">get all colliders in a region</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_stats">get_stats ()</a></td>
+	<td class="summary">get statistics about the physics world</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#debug_draw">debug_draw (color_map)</a></td>
+	<td class="summary">draw debug information for colliders and grid</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "init"></a>
+    <strong>init (cell_size)</strong>
+    </dt>
+    <dd>
+    initialize or re-initialize the physics world
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cell_size</span>
+         number size of the grid cells (e.g., 16 or 32)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear"></a>
+    <strong>clear ()</strong>
+    </dt>
+    <dd>
+    clear all colliders and reset the grid
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (id, x, y, w, h, type, active, mask, on_collide)</strong>
+    </dt>
+    <dd>
+    add or update an aabb collider in the world
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+        <li><span class="parameter">w</span>
+         number
+        </li>
+        <li><span class="parameter">h</span>
+         number
+        </li>
+        <li><span class="parameter">type</span>
+         string (optional) e.g., 'solid', 'trigger', 'player'
+        </li>
+        <li><span class="parameter">active</span>
+         boolean (optional) if false, is ignored by queries
+        </li>
+        <li><span class="parameter">mask</span>
+         number (optional) collision bitmask (default: 0xFFFFFFFF)
+        </li>
+        <li><span class="parameter">on_collide</span>
+         function (optional) callback(id, other_id, other_col, nx, ny)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_circle"></a>
+    <strong>add_circle (id, x, y, radius, type, active, mask, on_collide)</strong>
+    </dt>
+    <dd>
+    add or update a circle collider in the world
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+        <li><span class="parameter">x</span>
+         number center x
+        </li>
+        <li><span class="parameter">y</span>
+         number center y
+        </li>
+        <li><span class="parameter">radius</span>
+         number
+        </li>
+        <li><span class="parameter">type</span>
+         string (optional)
+        </li>
+        <li><span class="parameter">active</span>
+         boolean (optional)
+        </li>
+        <li><span class="parameter">mask</span>
+         number (optional)
+        </li>
+        <li><span class="parameter">on_collide</span>
+         function (optional)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_polygon"></a>
+    <strong>add_polygon (id, x, y, vertices, type, active, mask, on_collide)</strong>
+    </dt>
+    <dd>
+    add or update a polygon collider in the world
+ vertices are specified in world space
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+        <li><span class="parameter">x</span>
+         number reference x position
+        </li>
+        <li><span class="parameter">y</span>
+         number reference y position
+        </li>
+        <li><span class="parameter">vertices</span>
+         table array of {x=number, y=number} in world space
+        </li>
+        <li><span class="parameter">type</span>
+         string (optional)
+        </li>
+        <li><span class="parameter">active</span>
+         boolean (optional)
+        </li>
+        <li><span class="parameter">mask</span>
+         number (optional)
+        </li>
+        <li><span class="parameter">on_collide</span>
+         function (optional)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add_layered"></a>
+    <strong>add_layered (id, x, y, w, h, type, layer, active, on_collide)</strong>
+    </dt>
+    <dd>
+    add or update a collider (just layer, no mask)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+        <li><span class="parameter">w</span>
+         number
+        </li>
+        <li><span class="parameter">h</span>
+         number
+        </li>
+        <li><span class="parameter">type</span>
+         string (optional)
+        </li>
+        <li><span class="parameter">layer</span>
+         number (optional) layer number (0-31), converted to bitmask
+        </li>
+        <li><span class="parameter">active</span>
+         boolean (optional)
+        </li>
+        <li><span class="parameter">on_collide</span>
+         function (optional)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "remove"></a>
+    <strong>remove (id)</strong>
+    </dt>
+    <dd>
+    remove a collider from the world
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (id, x, y)</strong>
+    </dt>
+    <dd>
+    update a collider's position and re-insert into grid
+ use this for non-physics-driven movement.
+ for physics-driven movement, use 'physics.move()'.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+        <li><span class="parameter">x</span>
+         number new x
+        </li>
+        <li><span class="parameter">y</span>
+         number new y
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update_polygon"></a>
+    <strong>update_polygon (id, vertices)</strong>
+    </dt>
+    <dd>
+    update polygon vertices (use after rotating/scaling a polygon)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number unique id
+        </li>
+        <li><span class="parameter">vertices</span>
+         table new vertices in world space
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "check"></a>
+    <strong>check (id, x, y, type_filter, mask_filter)</strong>
+    </dt>
+    <dd>
+    check for overlap at a potential position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number id of the checker
+        </li>
+        <li><span class="parameter">x</span>
+         number x-position to check at
+        </li>
+        <li><span class="parameter">y</span>
+         number y-position to check at
+        </li>
+        <li><span class="parameter">type_filter</span>
+         string (optional) only check against this type
+        </li>
+        <li><span class="parameter">mask_filter</span>
+         number (optional) collision mask filter
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table a table of colliders this object would hit
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cache_neighbors"></a>
+    <strong>cache_neighbors (id)</strong>
+    </dt>
+    <dd>
+    cache neighbors for a collider
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number collider id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_cache"></a>
+    <strong>clear_cache (id)</strong>
+    </dt>
+    <dd>
+    clear cached neighbors for a collider
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number collider id
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "move"></a>
+    <strong>move (id, dx, dy, use_swept, stop_on_first)</strong>
+    </dt>
+    <dd>
+    move a collider with collision resolution
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number id to move
+        </li>
+        <li><span class="parameter">dx</span>
+         number
+        </li>
+        <li><span class="parameter">dy</span>
+         number
+        </li>
+        <li><span class="parameter">use_swept</span>
+         boolean (optional) use swept aabb for continuous collision
+        </li>
+        <li><span class="parameter">stop_on_first</span>
+         boolean (optional) stop on first collision (faster)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+        number new_x</li>
+        <li>
+        number new_y</li>
+        <li>
+        table hits { x = {id=col}, y = {id=col} }</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "raycast"></a>
+    <strong>raycast (x1, y1, x2, y2, type_filter, mask_filter, callback)</strong>
+    </dt>
+    <dd>
+    raycast through the world
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x1</span>
+         number start x
+        </li>
+        <li><span class="parameter">y1</span>
+         number start y
+        </li>
+        <li><span class="parameter">x2</span>
+         number end x
+        </li>
+        <li><span class="parameter">y2</span>
+         number end y
+        </li>
+        <li><span class="parameter">type_filter</span>
+         string (optional) only check this type
+        </li>
+        <li><span class="parameter">mask_filter</span>
+         number (optional) collision mask filter
+        </li>
+        <li><span class="parameter">callback</span>
+         function (optional) fn(id, col, hit_x, hit_y) -> bool (return true to stop)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of hits: { {id, col, x, y, distance}, ... }
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get"></a>
+    <strong>get (id)</strong>
+    </dt>
+    <dd>
+    get a collider by id
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table collider or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "exists"></a>
+    <strong>exists (id)</strong>
+    </dt>
+    <dd>
+    check if a collider exists
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         string|number
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "query_region"></a>
+    <strong>query_region (x, y, w, h, type_filter, mask_filter)</strong>
+    </dt>
+    <dd>
+    get all colliders in a region
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number
+        </li>
+        <li><span class="parameter">y</span>
+         number
+        </li>
+        <li><span class="parameter">w</span>
+         number
+        </li>
+        <li><span class="parameter">h</span>
+         number
+        </li>
+        <li><span class="parameter">type_filter</span>
+         string (optional)
+        </li>
+        <li><span class="parameter">mask_filter</span>
+         number (optional)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table array of {id, col}
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_stats"></a>
+    <strong>get_stats ()</strong>
+    </dt>
+    <dd>
+    get statistics about the physics world
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        table { colliders, active_cells, total_cells }
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "debug_draw"></a>
+    <strong>debug_draw (color_map)</strong>
+    </dt>
+    <dd>
+    draw debug information for colliders and grid
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">color_map</span>
+         table (optional) { type = {r,g,b,a} }
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

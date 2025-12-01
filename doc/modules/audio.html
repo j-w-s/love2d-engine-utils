@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/ai.html">ai</a></li>
+  <li><a href="../modules/animation.html">animation</a></li>
+  <li><strong>audio</strong></li>
+  <li><a href="../modules/camera.html">camera</a></li>
+  <li><a href="../modules/ecs.html">ecs</a></li>
+  <li><a href="../modules/input.html">input</a></li>
+  <li><a href="../modules/lighting.html">lighting</a></li>
+  <li><a href="../modules/luna.html">luna</a></li>
+  <li><a href="../modules/markov.html">markov</a></li>
+  <li><a href="../modules/matrix.html">matrix</a></li>
+  <li><a href="../modules/noise.html">noise</a></li>
+  <li><a href="../modules/particles.html">particles</a></li>
+  <li><a href="../modules/physics.html">physics</a></li>
+  <li><a href="../modules/renderer.html">renderer</a></li>
+  <li><a href="../modules/tests.luna-tests.html">tests.luna-tests</a></li>
+  <li><a href="../modules/vector.html">vector</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>audio</code></h1>
+<p>calculate distance between two 3d points</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#load_sfx">load_sfx (name, path_or_data, max_pool)</a></td>
+	<td class="summary">load a sound effect (static, pooled)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#load_music">load_music (name, path)</a></td>
+	<td class="summary">load a music track (streamed)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play_sfx">play_sfx (name, options)</a></td>
+	<td class="summary">play a sound effect</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_playing_sfx">is_playing_sfx (name)</a></td>
+	<td class="summary">check if any instance of an sfx is currently playing</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stop_sfx">stop_sfx (name)</a></td>
+	<td class="summary">stop all instances of an sfx</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stop_all_sfx">stop_all_sfx ()</a></td>
+	<td class="summary">stop all currently playing sfx</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#play_music">play_music (name, options)</a></td>
+	<td class="summary">play a music track</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is_playing_music">is_playing_music (name)</a></td>
+	<td class="summary">check if music is currently playing</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pause_music">pause_music ()</a></td>
+	<td class="summary">pause the currently playing music</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#resume_music">resume_music ()</a></td>
+	<td class="summary">resume the currently paused music</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_music_pitch">set_music_pitch (pitch)</a></td>
+	<td class="summary">set music pitch</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#stop_music">stop_music (options)</a></td>
+	<td class="summary">stop the currently playing music</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_volume">set_volume (group, vol)</a></td>
+	<td class="summary">set volume for a group</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_volume">get_volume (group)</a></td>
+	<td class="summary">get volume for a group</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_bus">create_bus (name, volume, parent)</a></td>
+	<td class="summary">create or update an audio bus</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_bus_volume">set_bus_volume (name, volume)</a></td>
+	<td class="summary">set bus volume</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_bus_volume">get_bus_volume (name)</a></td>
+	<td class="summary">get bus volume</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_listener">set_listener (x, y, z, forward_x, forward_y, forward_z, up_x, up_y, up_z)</a></td>
+	<td class="summary">set listener position and orientation for 3d audio</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_listener_velocity">set_listener_velocity (vx, vy, vz)</a></td>
+	<td class="summary">set listener velocity for doppler effect</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#create_reverb_zone">create_reverb_zone (x, y, z, radius, decay, density)</a></td>
+	<td class="summary">create a reverb zone</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#clear_reverb_zones">clear_reverb_zones ()</a></td>
+	<td class="summary">clear all reverb zones</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_doppler">set_doppler (enabled, factor, speed_of_sound)</a></td>
+	<td class="summary">set doppler effect parameters</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#set_spatial_params">set_spatial_params (rolloff, ref_distance, max_distance)</a></td>
+	<td class="summary">set spatial audio parameters</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#update">update (dt)</a></td>
+	<td class="summary">update fade timers and spatial audio (call in love.update)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "load_sfx"></a>
+    <strong>load_sfx (name, path_or_data, max_pool)</strong>
+    </dt>
+    <dd>
+    load a sound effect (static, pooled)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string asset name (e.g., 'jump')
+        </li>
+        <li><span class="parameter">path_or_data</span>
+         string|SoundData file path or existing SoundData
+        </li>
+        <li><span class="parameter">max_pool</span>
+         number (optional) max concurrent plays
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "load_music"></a>
+    <strong>load_music (name, path)</strong>
+    </dt>
+    <dd>
+    load a music track (streamed)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string asset name (e.g., 'level1')
+        </li>
+        <li><span class="parameter">path</span>
+         string file path (e.g., 'music/level1.ogg')
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "play_sfx"></a>
+    <strong>play_sfx (name, options)</strong>
+    </dt>
+    <dd>
+    play a sound effect
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string asset name
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) { vol=1, pitch=1, pitch_var=0, vol_var=0, x=nil, y=nil, z=nil, vx=0, vy=0, vz=0, lowpass=nil, highpass=nil, bus=nil }
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if played, false if pool full or not loaded
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_playing_sfx"></a>
+    <strong>is_playing_sfx (name)</strong>
+    </dt>
+    <dd>
+    check if any instance of an sfx is currently playing
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string asset name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if any instance is playing
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stop_sfx"></a>
+    <strong>stop_sfx (name)</strong>
+    </dt>
+    <dd>
+    stop all instances of an sfx
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string asset name
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stop_all_sfx"></a>
+    <strong>stop_all_sfx ()</strong>
+    </dt>
+    <dd>
+    stop all currently playing sfx
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "play_music"></a>
+    <strong>play_music (name, options)</strong>
+    </dt>
+    <dd>
+    play a music track
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string asset name
+        </li>
+        <li><span class="parameter">options</span>
+         table (optional) { vol=1, loop=true, fade_in=0, lowpass=nil, highpass=nil, bus=nil }
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is_playing_music"></a>
+    <strong>is_playing_music (name)</strong>
+    </dt>
+    <dd>
+    check if music is currently playing
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string (optional) specific track name, or nil to check any music
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean true if playing
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pause_music"></a>
+    <strong>pause_music ()</strong>
+    </dt>
+    <dd>
+    pause the currently playing music
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "resume_music"></a>
+    <strong>resume_music ()</strong>
+    </dt>
+    <dd>
+    resume the currently paused music
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_music_pitch"></a>
+    <strong>set_music_pitch (pitch)</strong>
+    </dt>
+    <dd>
+    set music pitch
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pitch</span>
+         number pitch multiplier
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "stop_music"></a>
+    <strong>stop_music (options)</strong>
+    </dt>
+    <dd>
+    stop the currently playing music
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+         table (optional) { fade_out=0 }
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_volume"></a>
+    <strong>set_volume (group, vol)</strong>
+    </dt>
+    <dd>
+    set volume for a group
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">group</span>
+         string 'master', 'music', or 'sfx'
+        </li>
+        <li><span class="parameter">vol</span>
+         number 0.0 to 1.0
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_volume"></a>
+    <strong>get_volume (group)</strong>
+    </dt>
+    <dd>
+    get volume for a group
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">group</span>
+         string 'master', 'music', or 'sfx'
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number volume (0.0 to 1.0)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_bus"></a>
+    <strong>create_bus (name, volume, parent)</strong>
+    </dt>
+    <dd>
+    create or update an audio bus
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string bus name
+        </li>
+        <li><span class="parameter">volume</span>
+         number 0.0 to 1.0
+        </li>
+        <li><span class="parameter">parent</span>
+         string (optional) parent bus name
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_bus_volume"></a>
+    <strong>set_bus_volume (name, volume)</strong>
+    </dt>
+    <dd>
+    set bus volume
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string bus name
+        </li>
+        <li><span class="parameter">volume</span>
+         number 0.0 to 1.0
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_bus_volume"></a>
+    <strong>get_bus_volume (name)</strong>
+    </dt>
+    <dd>
+    get bus volume
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         string bus name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number effective volume (0.0 to 1.0) including parent buses
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_listener"></a>
+    <strong>set_listener (x, y, z, forward_x, forward_y, forward_z, up_x, up_y, up_z)</strong>
+    </dt>
+    <dd>
+    set listener position and orientation for 3d audio
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number x position
+        </li>
+        <li><span class="parameter">y</span>
+         number y position
+        </li>
+        <li><span class="parameter">z</span>
+         number z position
+        </li>
+        <li><span class="parameter">forward_x</span>
+         number (optional) forward vector x
+        </li>
+        <li><span class="parameter">forward_y</span>
+         number (optional) forward vector y
+        </li>
+        <li><span class="parameter">forward_z</span>
+         number (optional) forward vector z
+        </li>
+        <li><span class="parameter">up_x</span>
+         number (optional) up vector x
+        </li>
+        <li><span class="parameter">up_y</span>
+         number (optional) up vector y
+        </li>
+        <li><span class="parameter">up_z</span>
+         number (optional) up vector z
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_listener_velocity"></a>
+    <strong>set_listener_velocity (vx, vy, vz)</strong>
+    </dt>
+    <dd>
+    set listener velocity for doppler effect
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vx</span>
+         number velocity x
+        </li>
+        <li><span class="parameter">vy</span>
+         number velocity y
+        </li>
+        <li><span class="parameter">vz</span>
+         number velocity z
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "create_reverb_zone"></a>
+    <strong>create_reverb_zone (x, y, z, radius, decay, density)</strong>
+    </dt>
+    <dd>
+    create a reverb zone
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+         number center x
+        </li>
+        <li><span class="parameter">y</span>
+         number center y
+        </li>
+        <li><span class="parameter">z</span>
+         number center z
+        </li>
+        <li><span class="parameter">radius</span>
+         number zone radius
+        </li>
+        <li><span class="parameter">decay</span>
+         number reverb decay time
+        </li>
+        <li><span class="parameter">density</span>
+         number reverb density
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "clear_reverb_zones"></a>
+    <strong>clear_reverb_zones ()</strong>
+    </dt>
+    <dd>
+    clear all reverb zones
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_doppler"></a>
+    <strong>set_doppler (enabled, factor, speed_of_sound)</strong>
+    </dt>
+    <dd>
+    set doppler effect parameters
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">enabled</span>
+         boolean enable/disable doppler
+        </li>
+        <li><span class="parameter">factor</span>
+         number doppler factor (0-1)
+        </li>
+        <li><span class="parameter">speed_of_sound</span>
+         number speed of sound in m/s
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "set_spatial_params"></a>
+    <strong>set_spatial_params (rolloff, ref_distance, max_distance)</strong>
+    </dt>
+    <dd>
+    set spatial audio parameters
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">rolloff</span>
+         number distance attenuation rolloff
+        </li>
+        <li><span class="parameter">ref_distance</span>
+         number reference distance for attenuation
+        </li>
+        <li><span class="parameter">max_distance</span>
+         number maximum hearing distance
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "update"></a>
+    <strong>update (dt)</strong>
+    </dt>
+    <dd>
+    update fade timers and spatial audio (call in love.update)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+         number delta time
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2025-12-01 14:00:32 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
